@@ -38,7 +38,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
         end_date:'2010.06',
         university:'南京农业大学',
         studyType:'学士学位',
-        awards:'参加SAT小组，研发肉品跟踪追溯系统'
+        awards:''
       }
     ],
     workInfo:[
@@ -47,20 +47,20 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
         end_date:'2015.06',
         company:'中石化南京工程有限公司',
         position:'软件开发工程师',
-        highlights:'负责公司内外网开发'
+        highlights:'主要负责公司网站、软件、数据库的开发工作；'
       },
       {
         start_date:'2015.06',
         end_date:'至今',
         company:'杭州蔓藤网络科技有限公司',
         position:'高级Web开发工程师',
-        highlights:'负责平台开发，构建'
+        highlights:'负责公司电商平台开发，以下是这段时间以来开发投入使用的产品：1.基于高德LBS广告投放管理后台、库房管理后台。2.移动端H5热卖商城。3.重构了国产ECSHOP开源商城移动版。4.电商平台标准化商品库管理后台'
       }
     ],
     skills:[
       {
         skill_name:'JavaScript',
-        stars:5
+        stars:4
       },
       {
         skill_name:'Html',
@@ -68,18 +68,42 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       },
       {
         skill_name:'Css',
-        stars:3
+        stars:4
       },
       {
         skill_name:'Nodejs',
         stars:4
       },
       {
+        skill_name:'MEAN架构',
+        stars:4
+      },
+      {
         skill_name:'Angular+Ionic',
-        stars:5
+        stars:4
       },
       {
         skill_name:'React',
+        stars:3
+      },
+      {
+        skill_name:'React Native',
+        stars:2
+      },
+      {
+        skill_name:'MongoDb',
+        stars:3
+      },
+      {
+        skill_name:'Postgresql',
+        stars:3
+      },
+      {
+        skill_name:'Redis',
+        stars:3
+      },
+      {
+        skill_name:'Oracle',
         stars:3
       }
     ],
@@ -174,70 +198,94 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       window.location.href="https://github.com/njaulj/OpenCV"
     }  
 
-    $scope.resume = {
-      baseInfo:{
-        chineseName:'刘君',
-        englishName:'Jack Willson',
-        job:'高级 Web 开发工程师'
-      },
-      eduInfo:[
-        {
-          start_date:'2006.09',
-          end_date:'2010.06',
-          university:'南京农业大学',
-          studyType:'学士学位',
-          awards:'参加SAT小组，研发肉品跟踪追溯系统'
-        }
-      ],
-      workInfo:[
-        {
-          start_date:'2010.08',
-          end_date:'2015.06',
-          company:'中石化南京工程有限公司',
-          position:'软件开发工程师',
-          highlights:'负责公司内外网开发'
-        },
-        {
-          start_date:'2015.06',
-          end_date:'至今',
-          company:'杭州蔓藤网络科技有限公司',
-          position:'高级Web开发工程师',
-          highlights:'负责平台开发，构建'
-        }
-      ],
-      skills:[
-        {
-          skill_name:'JavaScript',
-          stars:5
-        },
-        {
-          skill_name:'Html',
-          stars:4
-        },
-        {
-          skill_name:'Css',
-          stars:3
-        },
-        {
-          skill_name:'Nodejs',
-          stars:4
-        },
-        {
-          skill_name:'Angular+Ionic',
-          stars:5
-        },
-        {
-          skill_name:'React',
-          stars:3
-        }
-      ],
-      contact:{
-        email:'18251888949@163.com',
-        phone:'18251888949',
-        github:'https://github.com/njaulj',
-        website:'https://www.baidu.com'
+  $scope.resume = {
+    baseInfo:{
+      chineseName:'刘君',
+      englishName:'Jack Willson',
+      job:'前端开发工程师'
+    },
+    eduInfo:[
+      {
+        start_date:'2006.09',
+        end_date:'2010.06',
+        university:'南京农业大学',
+        studyType:'学士学位',
+        awards:''
       }
+    ],
+    workInfo:[
+      {
+        start_date:'2010.08',
+        end_date:'2015.06',
+        company:'中石化南京工程有限公司',
+        position:'软件开发工程师',
+        highlights:'主要负责公司网站、软件、数据库的开发工作；'
+      },
+      {
+        start_date:'2015.06',
+        end_date:'至今',
+        company:'杭州蔓藤网络科技有限公司',
+        position:'高级Web开发工程师',
+        highlights:'负责公司电商平台开发，以下是这段时间以来开发投入使用的产品：1.基于高德LBS广告投放管理后台、库房管理后台。2.移动端H5热卖商城。3.重构了国产ECSHOP开源商城移动版。4.电商平台标准化商品库管理后台'
+      }
+    ],
+    skills:[
+      {
+        skill_name:'JavaScript',
+        stars:4
+      },
+      {
+        skill_name:'Html',
+        stars:4
+      },
+      {
+        skill_name:'Css',
+        stars:4
+      },
+      {
+        skill_name:'Nodejs',
+        stars:4
+      },
+      {
+        skill_name:'MEAN架构',
+        stars:4
+      },
+      {
+        skill_name:'Angular+Ionic',
+        stars:4
+      },
+      {
+        skill_name:'React',
+        stars:3
+      },
+      {
+        skill_name:'React Native',
+        stars:2
+      },
+      {
+        skill_name:'MongoDb',
+        stars:3
+      },
+      {
+        skill_name:'Postgresql',
+        stars:3
+      },
+      {
+        skill_name:'Redis',
+        stars:3
+      },
+      {
+        skill_name:'Oracle',
+        stars:3
+      }
+    ],
+    contact:{
+      email:'18251888949@163.com',
+      phone:'18251888949',
+      github:'https://github.com/njaulj',
+      website:'https://www.baidu.com'
     }
+  }
 
 
     // .fromTemplateUrl() method

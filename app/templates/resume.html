@@ -31,7 +31,7 @@
 									<div style="font-weight:500;font-size:20px" class="university">{{edu.university}}<span style="margin-left:40px;font-size:20px;font-weight:200;font-style:italic">{{edu.start_date}}~{{edu.end_date}}</span>
 									</div>
 									<h6><i class="ion-university">{{' '+edu.studyType}}</i></h6>
-									<textarea disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{edu.awards}}</textarea>
+									<textarea ng-if="edu.awards" disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{edu.awards}}</textarea>
 
 								</div>
 								

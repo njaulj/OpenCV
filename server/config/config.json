@@ -1,0 +1,15 @@
+{
+	"development": {
+        "username": "liujun",
+        "password": "cdmagprs",
+        "database": "tmt",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+      },
+      "qiniu": {
+        "ACCESS_KEY": "qxo9qNnbAjcZLERcXEU01Kb6aVHXXO5DiipLAqcc",
+        "SECRET_KEY": "3aR_qm8XzM81-Z3us_PPTlgM8pErc_gavTME5U_m",
+        "buckname": "pics",
+        "domain": "7xkoof.com1.z0.glb.clouddn.com"
+   	  }
+}
