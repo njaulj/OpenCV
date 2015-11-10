@@ -111,7 +111,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       email:'18251888949@163.com',
       phone:'18251888949',
       github:'https://github.com/njaulj',
-      website:'https://www.baidu.com'
+      website:''
     }
   }
 
@@ -283,7 +283,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       email:'18251888949@163.com',
       phone:'18251888949',
       github:'https://github.com/njaulj',
-      website:'https://www.baidu.com'
+      website:''
     }
   }
 
