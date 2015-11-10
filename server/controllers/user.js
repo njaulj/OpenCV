@@ -13,7 +13,8 @@ exports.insert = function(req,res){
 	var _user = {
 		chineseName:'刘君',
 		englishName:'Jack Willson',
-		job:'前端开发工程师'
+		job:'前端开发工程师',
+		intro:'热爱开源 喜欢动手实践'
 	}
 	var user = new User(_user)
 	user.save(function(err,data){
@@ -26,6 +27,7 @@ exports.insert = function(req,res){
 }
 
 exports.update = function(req,res){
+	
 	
 }
 

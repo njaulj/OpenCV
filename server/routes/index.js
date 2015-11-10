@@ -9,7 +9,7 @@ var contact = require('../controllers/contact')
 
 /* GET home page. */
 router.get('/api/user/insert', user.insert);
-router.get('/api/edu/insert', edu.insert);
+router.post('/api/edu/insert', edu.insert);
 router.get('/api/work/insert', work.insert);
 router.get('/api/skill/insert', skill.insert);
 router.get('/api/contact/insert', contact.insert);

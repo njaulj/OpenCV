@@ -2,8 +2,8 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var WorkSchema = new Schema({
-	start_date:{type:Date},
-	end_date:{type:Date},
+	start_date:{type:String},
+	end_date:{type:String},
 	company:String,
 	highlights:String,
 	position:String,

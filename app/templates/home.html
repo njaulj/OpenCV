@@ -17,6 +17,7 @@
 						
 						<h1>{{resume.baseInfo.chineseName || '老 王'}}</h1>
 						<h4><small style="font-style:italic">{{resume.baseInfo.job || '码农'}}</small></h4>
+						<blockquote>_{{copyIntro}}</blockquote>
 
 
 					</div>
@@ -150,28 +151,28 @@
 							<div class="list">
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">开始日期</span>
-							    <input  ng-model="resume.baseInfo.startDate" type="text" placeholder="2010.6">
+							    <input  ng-model="edu.data.start_date" type="text" placeholder="2010.6">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">结束日期</span>
-							    <input  ng-model="resume.baseInfo.endDate" type="text" placeholder="2010.6">
+							    <input  ng-model="edu.data.end_date" type="text" placeholder="2010.6">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">学校</span>
-							    <input  ng-model="resume.baseInfo.university" type="text" placeholder="清华大学">
+							    <input  ng-model="edu.data.university" type="text" placeholder="清华大学">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">学位</span>
-							    <input  ng-model="resume.baseInfo.studyType" type="text" placeholder="本科">
+							    <input  ng-model="edu.data.studyType" type="text" placeholder="本科">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">获奖情况</span>
-							    <textarea ng-model="resume.baseInfo.awards" style="height:150px;overflow-y:scroll;" placeholder="获得了某奖学金"></textarea>
+							    <textarea ng-model="edu.data.awards" style="height:150px;overflow-y:scroll;" placeholder="获得了某奖学金"></textarea>
 							  </label>
 
 							</div>
 							<div style="text-align:right">
-							<button class="button button-calm">增加</button></div>
+							<button ng-click="edu.insert()" class="button button-calm">增加</button></div>
 						</div>
 						<div class="work-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
 							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">

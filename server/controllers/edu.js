@@ -7,13 +7,14 @@ var eventproxy = require('eventproxy')
 
 exports.insert = function(req,res){
 	var _edu = {
-		start_date:'2010.06',
-		end_date:'2015.05',
-		studyType:'学士',
-		awards:'1等奖,3等奖',
-		university:'南京农业大学',
-		UserId:'564194a654bda3c904b1bca8'
+		start_date:req.body.data.start_date,
+		end_date:req.body.data.end_date,
+		studyType:req.body.data.studyType,
+		awards:req.body.data.awards,
+		university:req.body.data.university,
+		UserId:'5641df73e70137bd082c266c'
 	}
+	console.log(_edu)
 	var edu = new Edu(_edu)
 	edu.save(function(err,edu){
 		if(err){

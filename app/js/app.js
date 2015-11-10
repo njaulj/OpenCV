@@ -1,5 +1,9 @@
 
 var ionicApp = angular.module('ionicApp', ['ionic'])
+.constant('Config',{
+    host:'http://localhost:4000'
+  }
+)
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
@@ -25,19 +29,38 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
     $urlRouterProvider.otherwise("/resume");
   })
-.controller('HomeCtrl',['$scope','$ionicPopover','$timeout',function($scope,$ionicPopover,$timeout){
-  $scope.showtime  = true
+.controller('HomeCtrl',['$scope','$ionicPopover','$timeout','EduService',function($scope,$ionicPopover,$timeout,EduService){
+      $scope.showtime  = true
 
       $timeout(function(){
           $scope.showtime = false
       },5000)
 
 
+      $scope.copyIntro = ''
+
+      $scope.$on('$ionicView.enter',function(){
+        var length = $scope.resume.baseInfo.intro.length
+        var i = 0
+        
+        var func = function(){$timeout(function(){
+            $scope.copyIntro +=$scope.resume.baseInfo.intro[i]
+              i++
+              if(i<length){
+                func()          
+                }
+            },200)
+        }
+        func()
+      })
+
+
   $scope.resume = {
     baseInfo:{
       chineseName:'刘君',
       englishName:'Jack Willson',
-      job:'前端开发工程师'
+      job:'前端开发工程师',
+      intro:'热爱开源 喜欢动手实践'
     },
     eduInfo:[
       {
@@ -198,6 +221,25 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
     alert('一键发送简历功能稍后上线')
   }
 
+  $scope.edu = {
+    insert:function(){
+      var promise = EduService.ajax_insert(this.data)
+      promise
+      .then(function(data){
+        console.log(data)
+      },function(data){
+        console.log('服务器/数据库故障')
+      })
+    },
+    data:{
+      start_date:'',
+      end_date:'',
+      university:'',
+      studyType:'',
+      awards:''
+    }
+  }
+
 
 }])
 .controller('ResumeCtrl',['$scope','$ionicPopover','$timeout',function($scope,$ionicPopover,$timeout){
@@ -206,11 +248,15 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
     }  
 
 
+
+
   $scope.resume = {
     baseInfo:{
       chineseName:'刘君',
       englishName:'Jack Willson',
-      job:'前端开发工程师'
+      job:'前端开发工程师',
+      intro:'热爱开源 喜欢动手实践'
+
     },
     eduInfo:[
       {
@@ -294,7 +340,22 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       website:''
     }
   }
+  $scope.copyIntro = ''
 
+    $scope.$on('$ionicView.enter',function(){
+      var length = $scope.resume.baseInfo.intro.length
+      var i = 0
+      
+      var func = function(){$timeout(function(){
+          $scope.copyIntro +=$scope.resume.baseInfo.intro[i]
+            i++
+            if(i<length){
+              func()          
+              }
+          },200)
+      }
+      func()
+    })
 
     // .fromTemplateUrl() method
     $ionicPopover.fromTemplateUrl('my-popover.html', {
@@ -328,4 +389,24 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
       alert('一键发送简历功能稍后上线')
     }
 
+}])
+.service('EduService',['$http','$q','Config',function($http,$q,Config){
+  console.log(Config.host)
+  var ajax_insert = function(data,success,error){
+    var defered = $q.defer()
+    $http({method:'POST',url:Config.host+'/api/edu/insert',data:data})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+
+  return {
+    ajax_insert:ajax_insert
+  }
 }])
