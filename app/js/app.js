@@ -322,9 +322,10 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
 
   $scope.resume = Config.resume
-  $scope.copyIntro = ''
+  
 
     $scope.$on('$ionicView.enter',function(){
+      $scope.copyIntro = ''
       var length = $scope.resume.baseInfo.intro.length
       var i = 0
       
