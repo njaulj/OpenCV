@@ -3,7 +3,7 @@
 	  <div  class="buttons">
 	    <button class="button" ng-click="about()">about</button>
 	  </div>
-	  <h1 class="title">我的简历</h1>
+	  <h1 class="title">我的简历(体验版)</h1>
 	  <div class="buttons">
 	    <button ng-click="openPopover($event)" class="button"><i class="ion-person"></i></button>
 	  </div>
@@ -107,6 +107,16 @@
 				
 			</div>
 			<div class="col col-33">
+				<blockquote ng-if="showtime">
+					哇哦，很高兴你能来到这个页面，说明你是一个善于观察的yin。
+					未来将会有很强大的交互功能
+					<ul>
+						<li>*数据的双向绑定</li>
+						<li>*Json文件的直接生成</li>
+						<li>*支持高Bigger的JSON简历</li>
+						<li>*更多的动画体验页面</li>
+					</ul>
+				</blockquote>
 				<div class="row" style="text-align:right">
 					<div class="col">
 						<button ng-click="tabSelect(1)" ng-class="tabIndex == 1?'button button-energized':'button button-dark'">编辑器</button>

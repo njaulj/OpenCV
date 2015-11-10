@@ -3,7 +3,7 @@
 	  <div  class="buttons">
 	    <button class="button" ng-click="about()">about</button>
 	  </div>
-	  <h1 class="title">我的简历</h1>
+	  <h1 class="title">{{resume.baseInfo.chineseName || '我'}}的简历</h1>
 	  <div class="buttons">
 	    <button ng-click="openPopover($event)" class="button"><i class="ion-person"></i></button>
 	  </div>

@@ -25,7 +25,14 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
     $urlRouterProvider.otherwise("/resume");
   })
-.controller('HomeCtrl',['$scope','$ionicPopover',function($scope,$ionicPopover){
+.controller('HomeCtrl',['$scope','$ionicPopover','$timeout',function($scope,$ionicPopover,$timeout){
+  $scope.showtime  = true
+
+      $timeout(function(){
+          $scope.showtime = false
+      },5000)
+
+
   $scope.resume = {
     baseInfo:{
       chineseName:'刘君',
@@ -197,6 +204,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
     $scope.about = function(){
       window.location.href="https://github.com/njaulj/OpenCV"
     }  
+
 
   $scope.resume = {
     baseInfo:{
