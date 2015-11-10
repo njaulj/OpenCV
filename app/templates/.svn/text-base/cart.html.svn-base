@@ -1,0 +1,77 @@
+<ion-view  hide-tabs="false">
+  <ion-header-bar class="bar headbar">
+    <label class="title">购物车</label>
+  </ion-header-bar>
+  <ion-content style="background-color:#f2f2f2">
+    <!-- 购物车 店铺块 -->
+    <div class="shop">
+    	<!--购物车 店铺信息  -->
+    	<div class="shopInfo">
+        <div class="row row-center padZero">
+          <div ng-click="chooseShop()" class="col col-10 padZero shopChooseRadio">
+            <i ng-class="checked?'icon assertive ion-checkmark-circled':'icon ion-ios-circle-outline'"></i>
+          </div>
+          <div class="col col-10 padZero shopImg">
+            <img src="img/shopimg.png" />
+          </div>
+          <div class="col col-80 padZero shopName">
+            华联商贸
+          </div>
+        </div>
+      </div>
+    	<!-- 购物车 商品列表 -->
+        <ion-list>
+          <ion-item class="cartItem">
+            <div class="row row-center padZero">
+              <div ng-click="chooseShop()" class="col col-10 padZero itemChooseRadio">
+                <i ng-class="checked?'icon assertive ion-checkmark-circled':'icon ion-ios-circle-outline'"></i>
+              </div>
+              <div class="col col-20 itemImg padZero">
+                <img src="img/itemimg.png"/>
+              </div>
+              <div class="col col-70 padZero" style="padding-left:1em">
+                <div class="cartItemDetail cartItemName">商品商品商品商品商品商品商品</div>  
+                <div class="cartItemDetail cartItemUnit">规格：箱</div>  
+                <div class="cartItemDetail">
+                  <div class="cartItemPrice">{{99|currency:'¥'}}</div>
+                </div>
+                  <div class="actionBtns">
+                    <div class="actionMinus">-</div>
+                    <div class="cartItemCount">9987</div>
+                    <div class="actionAdd">+</div>
+                  </div>  
+              </div>
+            </div>
+            <ion-option-button class="place2favor" style="width:60px">
+              移入<br>
+              关注
+            </ion-option-button>
+            <ion-option-button class="button-assertive" style="width:60px">
+              删除
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+    </div>
+  </ion-content>
+  <ion-footer-bar style="padding:0;height:54px">
+    <div class="checkout">
+      <div class="row row-center padZero">
+        <div class="col col-10 padZero allInRadio">
+          <i class="icon ion-ios-circle-outline"></i>
+        </div>
+        <div class="col col-10 padZero allInBtn">
+          全选
+        </div>
+        <div class="col col-80 padZero billInfo">
+          <div class="block1">
+            <button class="button button-assertive checkoutBtn">结算</button>
+          </div>
+          <div class="block2">
+            <div>合计：￥<span class="billprice">{{324|currency:''}}</span></div>
+            <div>满1000包邮</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

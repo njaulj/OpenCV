@@ -1,0 +1,181 @@
+<ion-view>
+  <ion-header-bar class="bar headbar">
+    <label class="title">我的订单</label>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader" style="border-bottom:none;">
+    <div class="row  padZero" style="height:39px">
+      <div class="col col-33 padZero orderTabDiv">
+        <div ng-click="chooseOrderTab(0)" ng-class="chooseOrderTabIndex==0?'activeOrderTabBtn':'normalOrderTabBtn'">待付款(5)</div>
+      </div>
+      <div class="col col-33 padZero orderTabDiv">
+        <div ng-click="chooseOrderTab(1)" ng-class="chooseOrderTabIndex==1?'activeOrderTabBtn':'normalOrderTabBtn'">待收货(5)</div>
+      </div>
+      <div class="col col-33 padZero orderTabDiv">
+        <div ng-click="chooseOrderTab(2)" ng-class="chooseOrderTabIndex==2?'activeOrderTabBtn':'normalOrderTabBtn'">已完成(5)</div>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content style="background-color:#f2f2f2;padding-top:12px">
+    <ion-tabs delegate-handle="orderTabDelegate" class="tabs-light orderPage" style="border-bottom:solid 1px #f2f2f2">
+      <ion-tab title="待付款">
+        <ion-nav-view name="waitPay-tab">
+          <!-- 沿用首页定义的商品列表2 -->
+          <div class="lightListView">
+            <div class="lightListViewContent">
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即付款</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即付款</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即付款</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="待收货">
+        <ion-nav-view name="waitCheck-tab">
+          <!-- 沿用首页定义的商品列表2 -->
+          <div class="orderListView">
+            <div class="orderListViewContent">
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>确认收货</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品商品名称商品名称商品名称商品名称商品名称商品名称名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>确认收货</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>确认收货</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="待评价">
+        <ion-nav-view name="waitComment-tab">
+          <!-- 沿用首页定义的商品列表2 -->
+          <div class="lightListView">
+            <div class="lightListViewContent">
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即评价</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即评价</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即评价</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即评价</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="orderListViewItemOne">
+                <div class="orderListViewItem row  padZero">
+                  <div class="col col-33 orderImg padZero">
+
+                  </div>
+                  <div class="orderInfo col col-66 padZero">
+                    <div class="orderTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="actionOrderBtn"><i class="icon ion-pricetags"></i>立即评价</div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+</ion-view>

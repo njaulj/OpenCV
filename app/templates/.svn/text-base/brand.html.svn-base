@@ -1,0 +1,72 @@
+<ion-view hide-tabs="false">
+ 	<ion-header-bar class="bar headbar">
+    <div class="buttons no-text">
+    </div>
+ 		<label class="title">品牌热卖</label>
+
+ 	</ion-header-bar>
+  <div class="charactBars" style="margin-top:44px">
+    <ion-scroll direction="x" scrollbar-x="false">
+      <div class="row padZero" style="width:600px">      
+        <div ng-click="chooseCharact(0)" ng-class="chooseCharactIndex==0?'activeCharactBar':'normalCharactBar'">
+          全部
+        </div>
+        <div ng-click="chooseCharact(category.id)" ng-class="chooseCharactIndex==category.id?'activeCharactBar':'normalCharactBar'" ng-repeat="category in categories">
+          {{category.name}}
+        </div>
+        
+      </div>
+    </ion-scroll>
+    <div id="navCharactBlockBrand" class="navCharactBlock" style="margin-top:44px">
+      <div class="row padZero text-center row-wrap">
+        <div ng-click="chooseCharact(0)" ng-class="chooseCharactIndex==0?'col col-25 active-navCharactBtn':'col col-25 navCharactBtn'">全部</div>
+        <div ng-click="chooseCharact(category.id)" ng-class="chooseCharactIndex==category.id?'col col-25 active-navCharactBtn':'col col-25 navCharactBtn'" ng-repeat="category in categories">{{category.name}}</div>
+        
+      </div>
+      <div  class="row text-center" style="background-color:#fff;padding-top:10px;opacity:1">
+        <div class="col">
+          <button ng-click="chooseCharact(0)" class="button button-light" style="opacity:2;min-height:0;font-size:1em;line-height:25px">全部分类<i class="ion-ios-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-click="changeCharactBlock('Brand')" class="arrowDown" style="top:44px">
+    <i ng-class="showCharactBlock?'ion-ios-arrow-up':'ion-ios-arrow-down'"></i>
+  </div>
+  <ion-content style="background-color:#f2f2f2;margin-top:34px;border-top:solid 1px #666">
+    <!-- 首页第一行 全部、分类1、分类2 -->
+    
+
+    <div class="brandBar">
+      <ion-scroll direction="x" scrollbar-x="false" style="background-color:#fff;">
+        <div class="row padZero" style="width:{{80*brandlist.length}}px;min-width:320px;max-width:1000px">
+          <div ng-click="brandSelect(brand.brand_id,brand.brand_name)"  style="width:80px;padding:10px 10px;text-align:center;display:inline-block" ng-repeat="brand in brandlist">
+            <img ng-src="{{picHost+brand.brand_logo}}"  style="width:54px;height:auto"/>
+            <label ng-class="brandSelectId==brand.brand_id?'brand-selected':'brand-dselect'"> {{brand.brand_name}} </label>
+          </div>
+          
+        </div>
+          
+      </ion-scroll>
+    </div>
+
+    <!-- 首页商品 ListView 样式3 一个一块 比较重 -->
+    <div class="weightListView">
+      <div class="weightListViewContent">
+        <div ui-sref="tabs.goodsDetail({gid:item.goods_id})" class="weightListViewItem" ng-repeat="item in items">
+          <div class="weightImg">
+            <img ng-src="{{picHost+item.goods_thumb}}" />
+            <div class="weightDesp">{{item.goods_brief}}</div>
+          </div>
+          <div class="weightInfo">
+            <div class="weightTitle">{{item.goods_name}}</div>
+            <div class="weightPrice">
+              <span class="nowPrice">{{item.promote_price?item.promote_price:item.market_price}}</span>
+              <span class="originPrice">{{item.market_price}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,70 @@
+<ion-view hide-tabs="true">
+  <ion-header-bar class="bar headbar content-words">
+    <label class="title">联系我们</label>
+  </ion-header-bar>
+  <ion-content style="background-color: #f6f5f5;">
+    <div class="list contact-list">
+      <div class="item item-nav">
+        <div class="tabs" btn-active-directive="" single="true">
+          <a class="tab-item active active-item">
+            意见反馈
+          </a>
+          <a class="tab-item active-item">
+            联系客服
+          </a>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false">
+        <ion-slide>
+          <div class="box blue">
+            <div class="item item-clear">
+              <p>你的建议和不满就是我们做得更好的动力！</p>
+            </div>
+            <div class="item item-input-inset">
+              <textarea class="remark" placeholder="请输入你的建议" name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="item item-clear">
+              <p>你的联系方式</p>
+            </div>
+            <div class="item item-input-inset">
+              <label class="item-input-wrapper input-clear">
+                <input type="text" placeholder="手机号或者QQ">
+              </label>
+            </div>
+            <div class="item item-clear">
+              <div class="submit">
+                <button class="button button-assertive button-block">
+                  提交
+                </button>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box yellow">
+            <a class="item item-thumbnail-left" href="#">
+              <img src="cover.jpg">
+              <div style="text-align: center;">
+                <h2>联系在线客服</h2>
+                <p>在线对话，为你解决遇到的问题</p>
+                <p>让我们愉快的交流吧！</p>
+                <p>(08:00-23:00全年无休)</p>
+              </div>
+            </a>
+            <a class="item item-thumbnail-left" href="#">
+              <img src="cover.jpg">
+              <div style="text-align: center;">
+                <h2>拨打官方热线</h2>
+                <p>400-0000-000</p>
+                <p>(09:00-21:00全年无休)</p>
+              </div>
+            </a>
+            <div class="item item-clear">
+              <p>电话占线？非客服服务时间？ <a href="#" ui-sref="tabs.help">常见问题点这里</a></p>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,48 @@
+ionicApp
+.service('GET', ['$q', '$http', 'CONFIG', function(Q, http, config){
+    var get = function(url, params){
+        var deferred = Q.defer();
+        http({
+            method:'GET',
+            url: config.host+url,
+            params: params,
+            cache: config.cache,
+            timeout: config.timeout
+        })
+        .success(function(data,status,headers,config){
+            deferred.resolve(data)
+        })
+        .error(function(data,status,headers,config){
+            deferred.reject(data)
+        });
+
+        return deferred.promise;
+    };
+    return get;
+}])
+.service('POST', ['$q', '$http', 'CONFIG', function(Q, http, config){
+    var post = function(url, data){
+        var deferred = Q.defer();
+        http({
+            method:"post",
+            cache:false,
+            timeout:20000,
+            data:data,
+            type: 'json',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            responseType:"json",
+            url: config.host+url
+        })
+        .success(function(data,status,headers,config){
+            deferred.resolve(data)
+        })
+        .error(function(data,status,headers,config){
+            deferred.reject(data)
+        });
+
+        return deferred.promise;
+    };
+    return post;
+}]);

@@ -1,0 +1,137 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar-positive">
+	  <div ng-if="false" class="buttons">
+	    <button class="button" ng-click="doSomething()">打印</button>
+	  </div>
+	  <h1 class="title">我的简历</h1>
+	  <div class="buttons">
+	    <button ng-click="openPopover($event)" class="button"><i class="ion-person"></i></button>
+	  </div>
+	</ion-header-bar>
+		<div class="row" style="margin-top:44px;padding-top:0;width:960px;margin:0 auto">
+			<div class="col">
+				<ion-scroll direction="xy" style="height:100%;padding-top:10px">
+				
+
+					<div class="base-page"  style="text-align:left;border-bottom:dotted 1px #999;padding:50px 0 50px 100px;background-color:#f6f6f6;">
+						
+						<h1>{{resume.baseInfo.chineseName || '老 王'}}</h1>
+						<h4><small style="font-style:italic">{{resume.baseInfo.job || '码农'}}</small></h4>
+
+
+					</div>
+					<div class="edu-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								教育经历
+							</div>
+							<div class="col col-75">
+								<div class="edu-detail" style="position:relative" ng-repeat="edu in resume.eduInfo track by $index">
+									
+									<div style="font-weight:500;font-size:20px" class="university">{{edu.university}}<span style="margin-left:40px;font-size:20px;font-weight:200;font-style:italic">{{edu.start_date}}~{{edu.end_date}}</span>
+									</div>
+									<h6><i class="ion-university">{{' '+edu.studyType}}</i></h6>
+									<textarea disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{edu.awards}}</textarea>
+
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="work-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								工作经历
+							</div>
+							<div class="col col-75">
+								<div class="work-detail" style="position:relative" ng-repeat="work in resume.workInfo track by $index">
+									
+									<div style="font-weight:500;font-size:20px" class="company">{{work.company}}<span style="margin-left:40px;font-size:20px;font-weight:200;font-style:italic">{{work.start_date}}~{{work.end_date}}</span>
+									</div>
+									<h6><i class="ion-ios-speedometer">{{' '+work.position}}</i></h6>
+									<textarea disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{work.highlights}}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="skill-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								技能栈
+							</div>
+							<div class="col col-75">
+								<div class="row row-wrap row-no-padding">
+									<div class="col col-33" style="position:relative;margin-bottom:20px" ng-repeat="skill in resume.skills track by $index">
+										
+										<div>{{skill.skill_name}}</div>
+										<i ng-if="skill.stars>0" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>1" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>2" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>3" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>4" class="assertive ion-star"></i>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="contact-page" style="margin-top:40px;margin-bottom:100px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								联系方式
+							</div>
+							<div class="col col-75">
+								<div class="row row-wrap row-no-padding" >
+									<div class="col col-50">
+										<div>邮箱</div>
+										<a href="mailto:{{resume.contact.email}}">{{resume.contact.email}}</a>
+									</div>
+									<div class="col col-50">
+										<div>电话</div>
+										<a href="tel:{{resume.contact.phone}}">{{resume.contact.phone}}</a>
+									</div>
+									<div class="col col-50">
+										<div>个人网站</div>
+										<a href="{{resume.contact.website}}">{{resume.contact.website}}</a>
+									</div>
+									<div class="col col-50">
+										<div>Github</div>
+										<a href="{{resume.contact.github}}">{{resume.contact.github}}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ion-scroll>
+				
+			</div>
+		</div>
+</ion-view>
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view style="right:10px;width:240px;height:150px">
+    <ion-header-bar>
+    	<div class="buttons">
+	    <button ui-sref="home" class="button button-clear"><i class="ion-paintbrush"></i></button>
+	  </div>
+
+      <h1 class="title" style="font-size:40px"><i class="ion-person"></i></h1>
+      <div class="buttons">
+	    <button ng-click="sendResume()" class="button button-clear"><i class="ion-paper-airplane"></i></button>
+	  </div>
+    </ion-header-bar>
+    <ion-content>
+      <div class="row row-wrap" style="text-align:left;padding-left:20px">
+      	<div class="col col-100" style="">
+      			刘君
+      	</div>
+      	<div class="col col-100">
+      			Tel:18251888949
+      	</div>
+      	<div class="col col-100">
+      			Mail:18251888949@163.com
+      	</div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

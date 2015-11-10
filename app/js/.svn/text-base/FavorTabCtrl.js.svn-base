@@ -1,0 +1,9 @@
+ionicApp
+.controller('FavorTabCtrl', ['$scope','$ionicTabsDelegate','$timeout',function($scope,$ionicTabsDelegate,$timeout) {
+  console.log('FavorTabCtrl');
+  $scope.chooseTabIndex = 0;
+  $scope.chooseTab = function(index){
+    $scope.chooseTabIndex=index
+    $ionicTabsDelegate.$getByHandle('favorTabDelegate').select(index)
+  }
+}])

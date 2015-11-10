@@ -1,0 +1,114 @@
+<ion-view hide-nav-bar="true" hide-tabs="true">
+  <!-- 个人中心 没有bar-header -->
+  <ion-content has-bouncing="true">
+    <!-- 个人中心 header 固定在头部-->
+    <div class="goods-detail  content-words">
+      <div class="item">
+        <button class="button button-clear" ng-click="goBack();" style="position: absolute; z-index: 99;">
+          <i class="icon ion-android-arrow-dropleft-circle"></i>
+        </button>
+        <div class="slider-img">
+          <ion-slide-box delegate-handle="goods-pictures">
+            <ion-slide ng-repeat="item in view.goods.goods_info.pictures">
+              <img src="http://www.ecshop_one.cn/{{item.img_url}}" alt=""/>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+        <div class="content">
+          <h2 ng-bind="view.goods.goods_info.goods_name"></h2>
+          <p class="goods-price" style="" ng-bind="view.goods.goods_info.shop_price"></p>
+          <p class="goods-price2">价格 <span class="line-through"  ng-bind="view.goods.goods_info.market_price"></span></p>
+          <p>快递：<span style="padding-right: 30px;">20元 </span>月销 <span>3120笔</span></p>
+        </div>
+      </div>
+      <a class="item no-margin">
+        <div class="content" ng-click="fadein('info')">选择颜色 套餐类型 <i class="ion-chevron-right pull-right"></i></div>
+      </a>
+      <div class="item no-background no-margin">
+        <div class="content align-center">
+          <span style="padding: 5px 20px; background-color: #eeeeee; ">继续拖动，查看图文详情</span>
+          <div class="line-v"></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row align-center goods-info-nav" btn-active-directive="changeGoodsNav" single="true">
+          <div class="active-item col active" value="goodsPicture">图文详情</div>
+          <div class="active-item col" value="goodsInfo">产品参数</div>
+          <div class="active-item col" value="goodsRecom">买家评价</div>
+        </div>
+        <div ng-show="goodsDetail == 'goodsPicture'" class="content">
+          <div class="list">
+            <div class="item">
+              <span ng-bind="view.goods.goods_info.goods_desc"></span>
+            </div>
+          </div>
+        </div>
+        <div ng-show="goodsDetail == 'goodsInfo'" class="content goods-info">
+          <div class="row" ng-repeat="(key, item) in view.goods.goods_info.properties.pro">
+            <div class="col clo-25 type-name" ng-bind="key"></div>
+            <div class="col col-75">
+              <a class="type-item" href="#" ng-repeat="info in item">{{info.name}}：{{info.value}}</a>
+            </div>
+          </div>
+        </div>
+        <div ng-show="goodsDetail == 'goodsRecom'" class="content goods-reply">
+          <div class="list">
+            <div class="item" ng-repeat="item in view.replys">
+              <p><span class="align-left" ng-bind="item.username == ''?'匿名': item.username"></span><span class="align-right" ng-bind="item.add_time"></span></p>
+              <p ng-if="item.rank == 1"><i class="ion-ios-star-outline"></i></p>
+              <p ng-if="item.rank == 2"><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></p>
+              <p ng-if="item.rank == 3"><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></p>
+              <p ng-if="item.rank == 4"><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></p>
+              <p ng-if="item.rank == 5"><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></p>
+              <p ng-bind="item.content"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="goods-detail-footer">
+    <div class="row align-center">
+      <div class="col col-25">
+        <i class="icon ion-ios-star-outline"></i>
+        <span>感兴趣</span>
+      </div>
+      <div class="col col-25" ui-sref="tabs.cart">
+        <i class="ion-ios-star-outline"></i>
+        <span>购物车</span>
+      </div>
+      <div class="col col-50 add-package">加入购物车</div>
+    </div>
+  </ion-footer-bar>
+
+  <div class="select-pane pop-pane" fadein-directive="info">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="row" ng-repeat="item in view.goods.goods_info.properties.spe">
+        <div class="col clo-25 type-name">{{item.name}}</div>
+        <div class="col col-75" id="{{item.name}}" btn-active-directive="changeGoodsSpec" single="true">
+          <a ng-repeat="info in item.values track by $index" class="active-item type-item {{$index==0?'active': ''}}" value="{{item.name}}:{{info.id}}" href="#">{{info.label}}</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col clo-25 type-name" style="margin-top: 5px;">数量</div>
+        <div class="col col-75">
+          <div class="button-group">
+            <a class="button-reduce">-</a>
+            <a class="button-content">1</a>
+            <a class="button-add">+</a>
+          </div>
+        </div>
+      </div>
+      <ion-footer-bar class="goods-detail-footer" style="bottom: 0px;">
+        <div class="row align-center">
+          <div class="col col-25">
+            <i class="icon ion-ios-star-outline"></i>
+            <span>感兴趣</span>
+          </div>
+          <div class="col col-75 add-package" ng-click="addToCart()">加入购物车</div>
+        </div>
+      </ion-footer-bar>
+    </div>
+  </div>
+</ion-view>

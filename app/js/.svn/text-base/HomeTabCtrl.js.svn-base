@@ -1,0 +1,104 @@
+ionicApp
+.controller('HomeTabCtrl', ['$scope','HomeService','$timeout','$ionicSlideBoxDelegate',function($scope,HomeService,$timeout,$ionicSlideBoxDelegate) {
+  console.log('HomeTabCtrl');
+
+
+
+  $scope.touchMe = function(){
+    console.log('有效')
+  }
+
+  $scope.$on('$ionicView.loaded',function(){
+    var promise = HomeService.ajax_goods('best',0,10)
+    promise
+    .then(function(data){
+      console.log(data)
+      if(data.code == 0){
+        $scope.best_goods = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+    var promise1 = HomeService.ajax_ads(1,2)
+    promise1
+    .then(function(data){
+      if(data.code == 0){
+        $scope.banners = data.data
+        $ionicSlideBoxDelegate.$getByHandle('bannerHandle').update()
+
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+     var promise2 = HomeService.ajax_ads(5,1)
+    promise2
+    .then(function(data){
+      if(data.code == 0){
+        $scope.centerOne = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+    var promise3 = HomeService.ajax_ads(6,2)
+    promise3
+    .then(function(data){
+      if(data.code == 0){
+        $scope.centerDouble = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+    var promise4 = HomeService.ajax_ads(7,3)
+    promise4
+    .then(function(data){
+      if(data.code == 0){
+        $scope.centerThree = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+    var promise5 = HomeService.ajax_brand(1,0,8)
+    promise5
+    .then(function(data){
+      console.log(data)
+      if(data.code == 0){
+        $scope.brands = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+    var promise6 = HomeService.ajax_category(0)
+    promise6
+    .then(function(data){
+      if(data.code == 0){
+        console.log(data)
+        $scope.categories = data.data
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+
+
+  })
+
+}])

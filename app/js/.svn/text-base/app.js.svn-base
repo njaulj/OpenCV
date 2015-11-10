@@ -1,0 +1,313 @@
+
+var ionicApp = angular.module('ionicApp', ['ionic'])
+.constant('CONFIG', {
+    host: 'http://www.ecshop_one.cn',
+    cache: false,
+    timeout: 5000
+})
+
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.tabs.style('standard');
+    $ionicConfigProvider.backButton.text('').icon('ion-ios-arrow-left');
+    $ionicConfigProvider.navBar.alignTitle('center')
+    //$ionicConfigProvider.views.maxCache(0);
+    //$ionicConfigProvider.platform.android.views.maxCache(0);
+    $ionicConfigProvider.templates.maxPrefetch(0);
+
+    $stateProvider
+        .state('tabs', {
+          url: "/tab",
+          abstract: true,
+          templateUrl: "templates/tabs.html",
+          controller: 'TabCtrl'
+        })
+        .state('tabs.home', {
+          url: "/home",
+          views: {
+            'home-tab': {
+              templateUrl: "templates/home.html",
+              controller: 'HomeTabCtrl'
+            }
+          }
+        })
+        .state('tabs.charact', {
+          url: "/charact",
+          views: {
+            'charact-tab': {
+              templateUrl: "templates/category.html",
+              controller: 'categoryController'
+            }
+          }
+        })
+        .state('tabs.goodsList', {
+          url: "/tabs/categoryDetail/:id",
+          views: {
+            'charact-tab': {
+              templateUrl: function ($stateParams) {
+                return "templates/goods-list.html";
+              },
+              controller: 'goodsListController'
+            }
+          }
+        })
+        .state('tabs.goodsDetail', {
+          url: "/tabs/goodsDetail/:gid",
+          views: {
+            'charact-tab': {
+              templateUrl: function ($stateParams) {
+                return "templates/goods-detail.html";
+              },
+              controller: 'GoodsDetailTabCtrl'
+            }
+          }
+        })
+        .state('tabs.favor', {
+          url: "/favor",
+          views: {
+            'favor-tab': {
+              templateUrl: "templates/favor.html",
+              controller: 'FavorTabCtrl'
+            }
+          }
+        })
+
+        .state('tabs.cart', {
+          url: "/cart",
+          cache:false,
+          views: {
+            'cart-tab': {
+              templateUrl: "templates/cart.html",
+              controller: 'CartTabCtrl'
+            }
+          }
+        })
+        .state('tabs.setting', {
+          url: "/setting",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/setting.html",
+              controller: 'SettingTabCtrl'
+            }
+          }
+        })
+        .state('tabs.loginPassword', {
+          url: "/setting/loginPassword",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/login-password.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+        .state('tabs.setPassword', {
+          url: "/setting/setPassword",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/set-password.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+        .state('tabs.setPayPassword', {
+          url: "/setting/setPayPassword",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/set-paypassword.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+        .state('tabs.contactUs', {
+          url: "/setting/contactUs",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/contact-us.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+        .state('tabs.help', {
+          url: "/setting/help",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/help.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+        .state('tabs.message', {
+          url: "/setting/message",
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/message.html",
+              controller: 'LoginPasswordCtrl'
+            }
+          }
+        })
+
+        .state('tabs.myorder', {
+          url: '/myorder',
+          views: {
+            'home-tab': {
+              templateUrl: "templates/myorder.html?a=2",
+              controller: 'myOrderCtrl'
+            }
+          }
+        })
+        .state('tabs.myorder1', {
+          url: '/myorder1',
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/myorder.html",
+              controller: 'myOrderCtrl'
+            }
+          }
+        })
+        .state('tabs.address', {
+          url: '/address',
+          views: {
+            'setting-tab': {
+              templateUrl: "templates/address.html",
+              controller: 'AddressCtrl'
+            }
+          }
+        })
+        .state('tabs.brand', {
+          url: '/brand',
+          views: {
+            'home-tab': {
+              templateUrl: "templates/brand.html",
+              controller: 'BrandCtrl'
+            }
+          }
+        });
+    $urlRouterProvider.otherwise("/tab/home");
+  })
+
+
+.controller('SettingTabCtrl',['$scope', '$ionicPopup', function($scope, $ionicPopup){
+  //修改用户昵称
+  $scope.modifyAlias = function(){
+    // 一个精心制作的自定义弹窗
+    var myPopup = $ionicPopup.show({
+      template: '<p>设置后不可更改哦~</p><input type="password" ng-model="data.wifi" placeholder="由3-24位汉字、字母、数字组成">',
+      title: '昵称设置',
+      subTitle: ' ',
+      scope: $scope,
+      buttons: [
+        {
+          text: '保存',
+          type: 'button-assertive button-small',
+          onTap: function(e) {
+            /*if (true) {
+              //不允许用户关闭，除非他键入wifi密码
+              e.preventDefault();
+            } else {
+              return '';
+            }*/
+          }
+        },
+      ]
+    });
+  };
+}])
+
+.directive('btnActiveDirective', function(){
+    return {
+      restrict:'ACE',
+      replace:false,
+      template:"",
+      scope:false,
+      link:function(scope, elem, attrs){
+        var method = attrs['btnActiveDirective'];
+        var target = angular.element(elem);
+        var single = target.attr("single");
+        target.bind('click', function(event){
+          if(single == true || single == 'true'){
+            var items = document.querySelectorAll('.active-item');
+            for(var i= 0,len=items.length; i<len; i++){
+              angular.element(items[i]).removeClass('active');
+            }
+          }
+          angular.element(event.target).addClass('active');
+
+          var value = angular.element(event.target).attr("value");
+          if(typeof scope[method] == 'function'){
+            scope[method](value);
+          }
+        });
+      }
+    };
+})
+.directive('fadeinDirective', function(){
+    return {
+      restrict:'ACE',
+      replace:false,
+      template:"",
+      scope:false,
+      link:function(scope, elem, attrs){
+        scope.__fadeInList = scope.__fadeInList || [];
+        var key = attrs['fadeinDirective'];
+        var target = angular.element(elem);
+        scope.__fadeInList.push(new __fadeIn(key, target));
+
+        angular.element(document.querySelectorAll('.bg')).unbind("click").bind("click", function(){
+          for(var i= 0,len= scope.__fadeInList.length; i<len; i++){
+            scope.__fadeInList[i].hide();
+            scope.__fadeInList[i].state = false;
+          }
+        });
+        scope.fadein = function(_key){
+          for(var i= 0,len= scope.__fadeInList.length; i<len; i++){
+            if( scope.__fadeInList[i].key == _key){
+              if(scope.__fadeInList[i].state == false){
+                scope.__fadeInList[i].show();
+                scope.__fadeInList[i].state = true;
+              }else{
+                scope.__fadeInList[i].hide();
+                scope.__fadeInList[i].state = false;
+              }
+            }
+            else{
+              scope.__fadeInList[i].hide();
+              scope.__fadeInList[i].state = false;
+            }
+          }
+        };
+
+        function __fadeIn(key, target){
+          this.state=false;
+          this.key = key;
+          this.target = target;
+        }
+        __fadeIn.prototype.show = function(){
+            target.css({display: 'block'});
+        };
+        __fadeIn.prototype.hide = function(){
+          target.css({display: 'none'});
+        }
+      }
+    };
+})
+.directive('hideTabs', function($rootScope) {
+      return {
+        restrict: 'A',
+        link: function(scope, element, attributes) {
+          /*scope.$on('$ionicView.beforeLeave', function() {
+            $rootScope.hideTabs = false;
+          });*/
+          scope.$on('$ionicView.beforeEnter', function() {
+            if(attributes.hideTabs == 'true'){
+              $rootScope.hideTabs = true;
+            }
+            else{
+              $rootScope.hideTabs = false;
+            }
+            /*scope.$watch(attributes.hideTabs, function(value){
+              $rootScope.hideTabs = value;
+            });*/
+          });
+        }
+      };
+    });

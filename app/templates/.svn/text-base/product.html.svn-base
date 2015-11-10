@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-content>
+    <!-- 单品详情页面 商品大图轮播效果-->
+    <div class="BigPic"></div>
+    <!-- 单品标准信息 -->
+    <div class="productInfo"></div>
+    <!-- 选择颜色 套餐类型 -->
+    <div class="productStyle"></div>
+    <!-- 商品最新评论 -->
+    <div class="commentBox"></div>
+    <!-- 商品图文详情 产品参数 店铺推荐 考虑 tabs 或者 slidebox-->
+    <div class="productMore"></div>
+  </ion-content>
+</ion-view>

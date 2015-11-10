@@ -1,0 +1,77 @@
+<ion-modal-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="headbar">
+    <div class="buttons">
+        <button ng-click="btnrelyonslide()" style="color:#fff" class="button icon-left ion-ios-arrow-left button-clear"></button>
+    </div>
+        <div class="item item-input-inset" style="background-color:#bf4b56;border:none;margin-left:12px;margin-right:12px;width:100%">
+            <label class="item-input-wrapper" style="background-color:#bf4b56">
+                <i style="color:#fff;font-size:18px" class="icon ion-search placeholder-icon"></i>
+              <input id="keywords" ng-change="keyChange(keywords)" ng-model="keywords" type="text" placeholder="搜索商品" style="color:#fff">
+              
+            </label>
+        </div>
+        <i ng-show="keywords" ng-click="keywords=null" class="ion-close-circled" style="font-size:80%;position:fixed;right:78px;top:18px;color:#fff;z-index:9999"></i>
+        <div class="buttons">
+        <button ng-click="searchThis(keywords)" style="color:#fff;width:54px" class="button  button-clear">搜索</button>
+        </div>
+    </ion-header-bar>    
+<ion-content>
+  <ion-slide-box delegate-handle="searchSlide">
+      <ion-slide style="height:auto">
+              <div class="list">
+                  <div class="item" style="padding:18px 0 18px 12px;">
+                      <div class="leftdesp" style="display:inline-block;float:left">
+                          <button class="button button-clear"><i class="ion-fireball"></i> 热门:</button>
+                      </div>
+                      <div class="rightdesp" style="display:inline-block;width:auto;overflow-x:scroll;">
+                          <ion-scroll direction="x">
+                            <div style="width:1000px;min-width:320px;">
+                              <button ng-click="searchThis('连衣裙')" class="button button-light" style="border-color:#f2f2f2;border-radius:24px">连衣裙</button>
+                              <button ng-click="searchThis('地板')" class="button button-light" style="border-color:#f2f2f2;border-radius:24px">地板</button>
+                              <button ng-click="searchThis('瓷砖')" class="button button-light" style="border-color:#f2f2f2;border-radius:24px">瓷砖</button>
+                              <button ng-click="searchThis('床')" class="button button-light" style="border-color:#f2f2f2;border-radius:24px">床</button>
+                            </div>
+                          </ion-scroll>
+                      </div>
+                  </div>
+                  <div class="item" style="color:#b2b2b2">
+                    <i class="ion-clock"> 搜索记录:</i>
+                  </div>
+                  <div ng-click="searchThis(oftenkeyword)" class="item" ng-repeat="oftenkeyword in localKeywords track by $index">
+                    {{oftenkeyword}}
+                  </div>
+                  
+                  <div class="item" style="text-align:center">
+                    <button ng-click="clearSearch()" class="button button-block button-light">清除历史记录</button>
+                  </div>
+
+              </div>
+      </ion-slide>
+      <ion-slide style="height:auto">
+        <div class="lightListView">  
+          <div class="lightListViewContent">
+            <div class="lightListViewItemOne" ng-repeat="item in searchResults.goodslist">
+              <div class="lightListViewItem row  padZero">
+                <div class="col col-33 lightImg padZero">
+                  <img ng-src="{{picHost+item.goods_thumb}}" />
+                </div>
+                <div class="lightInfo col col-66 padZero">
+                  <div class="lightTitle">{{item.goods_name}}</div>
+                  <div class="lightPrice"><span class="nowPrice">{{item.promote_price?item.promote_price:item.market_price}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{item.market_price}}</span></div>
+                  <div class="lightInfoElse">
+
+                    <span ng-if="item.is_shipping" style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                    <span style="float:left">已售{{item.sales_count}}件
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+      </ion-slide>
+  </ion-slide-box>
+</ion-content>
+
+</ion-modal-view>

@@ -1,0 +1,125 @@
+<ion-view hide-nav-bar="true" hide-tabs="false">
+  <!-- 个人中心 没有bar-header -->
+  <ion-content class="user-setting content-words">
+    <!-- 个人中心 header 固定在头部-->
+    <div class="user-list">
+      <div class="user-item user-header header-color">
+        <div class="nav-btn left-nav">
+        </div>
+        <div class="nav-btn right-nav"></div>
+        <img src="/img/noheadphoto.png" alt=""/>
+        <div style="display: block;">
+          <p class="words align-center">649658707</p>
+          <p class="words align-center"><span class="alias-name" ng-click="modifyAlias();">昵称</span></p>
+        </div>
+      </div>
+    </div>
+    <!-- 个人中心 我的订单 -->
+    <!--<div class="user-list">
+      <div class="user-item under-line">
+        <i class="setting-icon order-icon"></i>
+        <div class="content">我的订单</div>
+        <div class="nav">查看全部订单 <i class="ion-chevron-right"></i></div>
+      </div>
+      <div class="user-item">
+        <table>
+          <tr>
+            <td><i class="setting-icon receive-money"></i></td>
+            <td><i class="setting-icon receive-goods"></i></td>
+            <td><i class="setting-icon exchange-goods"></i></td>
+          </tr>
+          <tr>
+            <td width="33%">待付款</td>
+            <td width="33%">待收货</td>
+            <td width="33%">返修/退换</td>
+          </tr>
+        </table>
+      </div>
+    </div>-->
+    <div class="list" style="margin-bottom: 0px;">
+      <a class="item item-icon-left" href="#" ui-sref="tabs.myorder1">
+        <i class="icon setting-icon change-passwords"></i>
+        我的订单
+        <span class="item-note">
+          查看全部订单 <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+    </div>
+    <div class="user-list" style="border-bottom: 1px solid #ececec;">
+      <div class="user-item" style="padding: 0px;">
+        <table>
+          <tr>
+            <td><i class="setting-icon receive-money"></i></td>
+            <td><i class="setting-icon receive-goods"></i></td>
+            <td><i class="setting-icon exchange-goods"></i></td>
+          </tr>
+          <tr>
+            <td width="33%">待付款</td>
+            <td width="33%">待收货</td>
+            <td width="33%">返修/退换</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- 个人中心 我的密码 -->
+    <div class="list">
+      <a class="item item-icon-left" ui-sref="tabs.loginPassword">
+        <i class="icon setting-icon change-passwords"></i>
+        修改登录密码
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#" ui-sref="tabs.setPayPassword">
+        <i class="icon setting-icon change-paywords"></i>
+        修改支付密码
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+      <a class="item item-icon-left" href="templates/address.html" ui-sref="tabs.address">
+        <i class="icon setting-icon change-paywords"></i>
+        修改收货地址
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+    </div>
+    <!-- 个人中心 我的优惠券 -->
+    <div class="list">
+      <a class="item item-icon-left" href="#">
+        <i class="icon setting-icon my-cards"></i>
+        我的优惠券
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+    </div>
+    <!-- 个人中心 消息提醒 -->
+    <div class="list">
+      <a class="item item-icon-left" href="#">
+        <i class="icon setting-icon my-messages"></i>
+        消息提醒
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+    </div>
+    <!-- 个人中心 关于我们 -->
+    <div class="list">
+      <a class="item item-icon-left" href="#" ui-sref="tabs.contactUs">
+        <i class="icon setting-icon about-us"></i>
+        关于我们
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+    </div>
+    <!-- 个人中心 退出登陆 按钮 -->
+    <div class="user-list" style="background: none;">
+      <div class="user-item">
+        <button class="button button-assertive button-block button-small">退出登录</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

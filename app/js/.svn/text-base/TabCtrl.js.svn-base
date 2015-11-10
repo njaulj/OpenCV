@@ -1,0 +1,172 @@
+ionicApp
+.controller('TabCtrl',['$scope','$ionicHistory','$state','$ionicModal','$ionicSlideBoxDelegate','$timeout','$localStorage','$window','HomeService',function($scope,$ionicHistory,$state,$ionicModal,$ionicSlideBoxDelegate,$timeout,$localStorage,$window,HomeService){
+  $scope.picHost = 'http://www.ecshop_one.cn/'
+  $scope.brandHost = 'http://www.ecshop_one.cn' //此处应建议后台统一图片相对路径
+  $scope.localKeywords =$localStorage.getArray('localKeywords')
+
+  if(!$scope.localKeywords){
+    console.log('空')
+  }
+
+  console.log('TabCtrl')
+  $scope.goBack =function(){
+    $ionicHistory.goBack();
+  }
+  $scope.mediaWidth = window.innerWidth
+  $scope.mediaHeight = window.innerHeight
+  console.log($scope.mediaWidth,$scope.mediaHeight)
+  
+  $scope.chooseCharactIndex = 0
+  $scope.chooseCharact = function(index){
+    console.log(index)
+    $scope.chooseCharactIndex = index
+    $scope.$broadcast('charactchanged')
+  }
+
+  $scope.showCharactBlock = false
+   $scope.showCharactBlockfromBrand = false
+  $scope.changeCharactBlock = function(where){
+    var dest = "navCharactBlock"
+    if(where) {
+      dest = "navCharactBlock"+where
+    }
+    console.log('点我')
+    if($scope.showCharactBlock){
+      console.log(1)
+      document.getElementById(dest).style.zIndex=0
+    }else{
+      console.log(2)
+      setTimeout(function(){
+        document.getElementById(dest).style.zIndex=1
+
+      },0)
+    }
+    $scope.showCharactBlock=!$scope.showCharactBlock
+  }
+
+  $scope.changeCharactBlockfromBrand = function(){
+    if($scope.showCharactBlockfromBrand){
+      console.log(1);
+      document.getElementById("navCharactBlockfromBrand").style.zIndex=-1
+    }else{
+      console.log(2);
+      document.getElementById("navCharactBlockfromBrand").style.zIndex=1000
+    }
+    $scope.showCharactBlockfromBrand=!$scope.showCharactBlockfromBrand
+  };
+
+  $scope.routeProvider = function(route){
+    var params = Array.prototype.slice.call(arguments);
+    var arr = [];
+    for(var i= 1, len=params.length; i<len; i++){
+      arr.push([params[i], '=', params[++i]].join(''));
+    }
+    $state.go(params[0], {str: arr.join('&'), id: 1111});
+  }
+  $scope.routeRedirectProvider = function(route){
+    var params = Array.prototype.slice.call(arguments);
+    var obj = {};
+    for(var i= 1, len=params.length; i<len; i++){
+      obj[params[i]] = params[++i];
+    }
+    $state.go(params[0], obj);
+  }
+  $scope.openSearchModal = function(){
+     $ionicModal.fromTemplateUrl('templates/search1.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.searchModal = modal;
+          $scope.searchModal.show();
+          $ionicSlideBoxDelegate.$getByHandle('searchSlide').enableSlide(false)
+      });
+  }
+
+  $scope.closeSearchModal = function(){
+    $scope.searchModal.hide()
+  }
+
+
+
+  $scope.keyChange = function(keywords){
+    console.log(keywords)
+  }
+
+  // $scope.openResultModal = function(){
+  //    $ionicModal.fromTemplateUrl('templates/search2.html', {
+  //       scope: $scope,
+  //       animation: 'slide-in-up'
+  //     }).then(function(modal) {
+  //         $scope.resultModal = modal;
+  //         $scope.resultModal.show();
+  //     });
+  // }
+
+  // $scope.closeResultModal = function(){
+  //   $scope.resultModal.hide()
+  // }
+
+  $scope.searchThis = function(keywords){
+    console.log(keywords)
+    if(keywords){
+      if(!_.filter($scope.localKeywords,function(n){
+        return n == keywords
+      }).length){
+        $scope.localKeywords.unshift(keywords)
+        if($scope.localKeywords.length>10){
+          $scope.localKeywords.pop(10)
+        }
+        $localStorage.setObject('localKeywords',$scope.localKeywords)
+      }
+    }
+    $timeout(function(){
+      // 获取服务器搜索结果
+    var  searchObj = {
+        'id':'',
+        'keywords':keywords,
+        'brand':'',
+        'price_max':'',
+        'price_min':'',
+        'type':'',
+        'sort':'',
+        'order':'',
+        'page':1
+      }
+
+      var promise7 = HomeService.ajax_search(searchObj)
+      promise7
+      .then(function(data){
+        if(data.code == 0){
+          console.log(data)
+          $scope.searchResults = data.data
+        }else{
+          console.log('有错误')
+        }
+      },function(data){
+        console.log('服务器/数据库故障')
+      })
+
+
+
+      $ionicSlideBoxDelegate.$getByHandle('searchSlide').slide(1)
+      // 允许滑动
+      $ionicSlideBoxDelegate.$getByHandle('searchSlide').enableSlide(true)
+    },500)
+  }
+
+  $scope.btnrelyonslide = function(){
+    var index= $ionicSlideBoxDelegate.$getByHandle('searchSlide').currentIndex()
+    if(index==1){
+      $ionicSlideBoxDelegate.$getByHandle('searchSlide').slide(0)
+    }else{
+       $scope.closeSearchModal()
+    }
+  }
+
+  $scope.clearSearch = function(){
+    delete $window.localStorage['localKeywords']
+    $scope.localKeywords = []
+  }
+
+
+}])

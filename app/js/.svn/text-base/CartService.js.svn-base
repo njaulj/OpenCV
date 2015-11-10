@@ -1,0 +1,21 @@
+ionicApp
+.service('CartService',['$http','$q',function($http,$q){
+  var host = 'http://www.ecshop_one.cn'
+  var ajax_cart = function(success,error){
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/flow/index'})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+  return {
+    ajax_cart:ajax_cart
+  }
+
+}])

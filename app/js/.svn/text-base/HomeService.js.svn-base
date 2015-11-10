@@ -1,0 +1,93 @@
+ionicApp
+.service('HomeService',['$http','$q',function($http,$q){
+  var host = 'http://www.ecshop_one.cn'
+  var ajax_goods = function(type,last,amount,success,error){
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/index/ajax_goods'+'?type='+type+'&last='+last+'&amount='+amount})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+
+  var ajax_ads = function(id,num,success,error){
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/index/ajax_ads'+'?id='+id+'&num='+num})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+  var ajax_brand = function(recommend,last,amount,success,error){
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/index/ajax_brand'+'?recommend='+recommend+'&last='+last+'&amount='+amount})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+  var ajax_category = function(cid,success,error){
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/index/ajax_category'+'?cid='+cid})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+  var ajax_search = function(searchObj,success,error){
+    /*
+    searchObj = {
+      'id':'',
+      'keywords':'',
+      'brand':'',
+      'price_max':'',
+      'price_min':'',
+      'type':'',
+      'sort':'',
+      'order':'',
+      'page':''
+    }
+    */
+
+    var defered = $q.defer()
+    $http({method:'GET',url:host+'/mobile/default/category/index'+'?id='+searchObj.id+'&keywords='+searchObj.keywords+'&brand='+searchObj.brand+'&price_max='+searchObj.price_max+'&price_min='+searchObj.price_min
+      +'&type='+searchObj.type+'&sort='+searchObj.sort+'&order='+searchObj.order+'&page='+searchObj.page})
+    .success(function(data){
+      defered.resolve(data)
+    })
+    .error(function(data,status,headers,config){
+      defered.reject(data)
+    })
+
+    return defered.promise
+  }
+
+  return {
+    ajax_goods:ajax_goods,
+    ajax_ads:ajax_ads,
+    ajax_brand:ajax_brand,
+    ajax_category:ajax_category,
+    ajax_search:ajax_search
+  }
+
+}])

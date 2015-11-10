@@ -1,0 +1,22 @@
+<ion-tabs class="tabs-icon-top tabs-stable" ng-class="{'tabs-item-hide': $root.hideTabs}">
+        <ion-tab title="首页" icon="ion-ios-home-outline" ui-sref="tabs.home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="分类" icon="ion-ios-list-outline" ui-sref="tabs.charact">
+          <ion-nav-view name="charact-tab"></ion-nav-view>
+        </ion-tab>
+
+
+        <ion-tab title="感兴趣" icon="ion-ios-star-outline" ui-sref="tabs.favor">
+          <ion-nav-view name="favor-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="购物车" icon="ion-ios-cart-outline" ui-sref="tabs.cart">
+          <ion-nav-view name="cart-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="个人中心" icon="ion-ios-person-outline" ui-sref="tabs.setting">
+          <ion-nav-view name="setting-tab"></ion-nav-view>
+        </ion-tab>
+</ion-tabs>

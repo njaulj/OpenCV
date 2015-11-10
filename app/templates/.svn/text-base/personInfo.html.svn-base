@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-header-bar class="bar headbar">
+    <label class="title">个人设置</label>
+  </ion-header-bar>
+  <ion-content>
+    <!-- 个人设置 头像、用户名、昵称、性别、出生日期、收货地址 条目样式 -->
+    <div class="personinfo">头像</div>
+    <div class="personinfo">用户名</div>
+    <div class="personinfo">昵称</div>
+    <div class="personinfo">性别</div>
+    <div class="personinfo">出生日期</div>
+    <div class="personinfo">收货地址</div>
+  </ion-content>
+</ion-view>

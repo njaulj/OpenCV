@@ -1,0 +1,53 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>蔓藤最新商城</title>
+
+  </head>
+
+  <body>
+    <ion-nav-bar class="bar-clear" no-tap-scroll="true">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
+  </body>
+<<<<<<< .mine
+  <script type="text/javascript">
+    var dynamicLoading = {
+        css: function(path){
+        if(!path || path.length === 0){
+          throw new Error('argument "path" is required !');
+        }
+        var head = document.getElementsByTagName('head')[0];
+            var link = document.createElement('link');
+            link.href = path;
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            head.appendChild(link);
+        },
+        js: function(path){
+        if(!path || path.length === 0){
+          throw new Error('argument "path" is required !');
+        }
+        var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.src = path;
+            script.type = 'text/javascript';
+            head.appendChild(script);
+        }
+    }
+
+    dynamicLoading.css('/ioniccss')
+    dynamicLoading.css('/css/style.css')
+    dynamicLoading.css('/css/font.css')
+    dynamicLoading.js('/night/js/ionic.bundle.min.js')
+    dynamicLoading.js('/js/app.js')
+  </script>
+=======
+
+
+>>>>>>> .r34
+</html>

@@ -1,0 +1,40 @@
+<ion-view hide-tabs="false"  hide-nav-bar="true">
+  <ion-header-bar class="bar headbar item-input-inset">
+    <!-- 搜索框 -->
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" placeholder="Search">
+    </label>
+  </ion-header-bar>
+  <ion-content class="goods-category" has-bouncing=true>
+    <div class="list">
+      <a class="item content-words" style="padding: 8px 16px;" href="#">
+        新品
+        <span class="item-note">
+          <i class="ion-chevron-right"></i>
+        </span>
+      </a>
+      <div class="row goods-row" style="padding: 0px;height: 100%;">
+        <div class="col col-25">
+          <div class="category-list content-words" btn-active-directive="changeCategory" single="true">
+            <a ng-repeat="item in topCategorys track by $index" href="#" class="active-item item {{$index==0?'active':''}}" value="{{item.id}}"><span ng-bind="item.name"></span></a>
+            <!--<a href="#" class="active-item item active">分类一</a>
+            <a href="#" class="active-item item">分类二</a>
+            <a href="#" class="active-item item">分类三</a>-->
+          </div>
+        </div>
+        <div class="col col-75 content-words" style="height: 100%; background-color: #fff;">
+          <div class="category-row row row-center" ng-repeat="columns in categoryDetail">
+            <div class="col col-33" ng-repeat="item in columns">
+              <!--<a class="button button-clear" ui-sref="tabs.categoryDetail" href="/tabs/categoryDetail/{{item.id}}}">-->
+              <button class="button button-clear" ng-click="routeRedirectProvider('tabs.goodsList', 'id', '{{item.id}}')">
+                <img src="{{item.cat_image}}" alt=""/>
+                <span ng-bind="item.name"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

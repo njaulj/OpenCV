@@ -1,0 +1,281 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar-positive">
+	  <div ng-if="false" class="buttons">
+	    <button class="button" ng-click="doSomething()">打印</button>
+	  </div>
+	  <h1 class="title">我的简历</h1>
+	  <div class="buttons">
+	    <button ng-click="openPopover($event)" class="button"><i class="ion-person"></i></button>
+	  </div>
+	</ion-header-bar>
+		<div class="row" style="margin-top:44px;padding-top:0;x">
+			<div class="col col-66">
+				<ion-scroll direction="y" style="height:100%;padding-top:10px">
+				
+
+					<div class="base-page"  style="text-align:left;border-bottom:dotted 1px #999;padding:50px 0 50px 100px;background-color:#f6f6f6">
+						
+						<h1>{{resume.baseInfo.chineseName || '老 王'}}</h1>
+						<h4><small style="font-style:italic">{{resume.baseInfo.job || '码农'}}</small></h4>
+
+
+					</div>
+					<div class="edu-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								教育经历
+							</div>
+							<div class="col col-75">
+								<div class="edu-detail" style="position:relative" ng-repeat="edu in resume.eduInfo track by $index">
+									<div ng-click="del_this(resume.eduInfo,$index)" class="del-btn assertive" style="position:absolute;right:0;">X</div>
+									<div style="font-weight:500;font-size:20px" class="university">{{edu.university}}<span style="margin-left:40px;font-size:20px;font-weight:200;font-style:italic">{{edu.start_date}}~{{edu.end_date}}</span>
+									</div>
+									<h6><i class="ion-university">{{' '+edu.studyType}}</i></h6>
+									<textarea disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{edu.awards}}</textarea>
+
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="work-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								工作经历
+							</div>
+							<div class="col col-75">
+								<div class="work-detail" style="position:relative" ng-repeat="work in resume.workInfo track by $index">
+									<div ng-click="del_this(resume.workInfo,$index)" class="del-btn assertive" style="position:absolute;right:0;">X</div>
+									<div style="font-weight:500;font-size:20px" class="company">{{work.company}}<span style="margin-left:40px;font-size:20px;font-weight:200;font-style:italic">{{work.start_date}}~{{work.end_date}}</span>
+									</div>
+									<h6><i class="ion-ios-speedometer">{{' '+work.position}}</i></h6>
+									<textarea disabled="disabled" style="width:100%;overflow-y:visible;min-height:50px;background-color:#fff">{{work.highlights}}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="skill-page" style="margin-top:40px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								技能栈
+							</div>
+							<div class="col col-75">
+								<div class="row row-wrap row-no-padding">
+									<div class="col col-33" style="position:relative;margin-bottom:20px" ng-repeat="skill in resume.skills track by $index">
+										<div ng-click="del_this(resume.skills,$index)" class="del-btn assertive" style="position:absolute;right:30;">X</div>
+										<div>{{skill.skill_name}}</div>
+										<i ng-if="skill.stars>0" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>1" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>2" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>3" class="assertive ion-star"></i>
+										<i ng-if="skill.stars>4" class="assertive ion-star"></i>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="contact-page" style="margin-top:40px;margin-bottom:100px">
+						<div class="row">
+							<div class="col col-25" style="color:#f1c40f;font-size:26px;font-weight:500">
+								联系方式
+							</div>
+							<div class="col col-75">
+								<div class="row row-wrap row-no-padding" >
+									<div class="col col-50">
+										<div>邮箱</div>
+										<a href="mailto:{{resume.contact.email}}">{{resume.contact.email}}</a>
+									</div>
+									<div class="col col-50">
+										<div>电话</div>
+										<a href="tel:{{resume.contact.phone}}">{{resume.contact.phone}}</a>
+									</div>
+									<div class="col col-50">
+										<div>个人网站</div>
+										<a href="{{resume.contact.website}}">{{resume.contact.website}}</a>
+									</div>
+									<div class="col col-50">
+										<div>Github</div>
+										<a href="{{resume.contact.github}}">{{resume.contact.github}}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ion-scroll>
+				
+			</div>
+			<div class="col col-33">
+				<div class="row" style="text-align:right">
+					<div class="col">
+						<button ng-click="tabSelect(1)" ng-class="tabIndex == 1?'button button-energized':'button button-dark'">编辑器</button>
+						<button ng-click="tabSelect(2)" ng-class="tabIndex == 2?'button button-energized':'button button-dark'">JSON</button>
+					</div>
+				</div>
+
+				<ion-scroll direction="y" style="padding-top:10px;height:100%;">
+					<div ng-if="tabIndex == 1">
+						<div class="base-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative">
+							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
+								基本信息
+							</div>
+							<div class="list">
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">姓名</span>
+							    <input ng-model="resume.baseInfo.chineseName" type="text" placeholder="老王">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">职业</span>
+							    <input ng-model="resume.baseInfo.job" type="text" placeholder="高级 Web 工程师">
+							  </label>
+							</div>
+							<div style="text-align:right">
+							<button ng-click="save" class="button button-calm">保存</button></div>
+						</div>
+						<div class="edu-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
+							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
+								教育经历
+							</div>
+							<div class="list">
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">开始日期</span>
+							    <input  ng-model="resume.baseInfo.startDate" type="text" placeholder="2010.6">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">结束日期</span>
+							    <input  ng-model="resume.baseInfo.endDate" type="text" placeholder="2010.6">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">学校</span>
+							    <input  ng-model="resume.baseInfo.university" type="text" placeholder="清华大学">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">学位</span>
+							    <input  ng-model="resume.baseInfo.studyType" type="text" placeholder="本科">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">获奖情况</span>
+							    <textarea ng-model="resume.baseInfo.awards" style="height:150px;overflow-y:scroll;" placeholder="获得了某奖学金"></textarea>
+							  </label>
+
+							</div>
+							<div style="text-align:right">
+							<button class="button button-calm">增加</button></div>
+						</div>
+						<div class="work-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
+							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
+								工作经历
+							</div>
+							<div class="list">
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">开始日期</span>
+							    <input  ng-model="resume.baseInfo.startDate" type="text" placeholder="2010.6">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">结束日期</span>
+							    <input  ng-model="resume.baseInfo.endDate" type="text" placeholder="2010.6">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">公司</span>
+							    <input  ng-model="resume.baseInfo.company" type="text" placeholder="FaceBook">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">职位</span>
+							    <input  ng-model="resume.baseInfo.position" type="text" placeholder="高级Web工程师">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">成就描述</span>
+							    <textarea ng-change="change(resume.baseInfo.highlights)" ng-model="resume.baseInfo.highlights" style="height:150px;overflow-y:scroll;" placeholder="获得了某些成就"></textarea>
+							  </label>
+							  
+
+							</div>
+							<div style="text-align:right">
+							<button class="button button-calm">增加</button></div>
+						</div>
+						<div class="skill-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
+							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
+								技能栈
+							</div>
+							<div class="list">
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">技能</span>
+							    <input  ng-model="skillInput" type="text" placeholder="JavaScript" />						    
+							  </label>
+							  <div class="light_stars item" style="z-index:9999">
+							  	<span>掌握程度</span>
+							  	<i ng-click="light(1)" ng-class="lightStars>0?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(2)" ng-class="lightStars>1?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(3)" ng-class="lightStars>2?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(4)" ng-class="lightStars>3?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(5)" ng-class="lightStars>4?'assertive ion-star':'ion-star'"></i>
+
+							  </div>
+							  
+							</div>
+							<div style="text-align:right">
+							<button ng-click="add(resume.skills,skill)" class="button button-calm">增加</button></div>
+						</div>
+						<div class="contact-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px;margin-bottom:100px">
+							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
+								联系方式
+							</div>
+							<div class="list">
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">邮箱</span>
+							    <input  ng-model="resume.baseInfo.email" type="text" placeholder="18251888949@163.com">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">电话</span>
+							    <input  ng-model="resume.baseInfo.phone" type="text" placeholder="18251888949">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">个人网站</span>
+							    <input  ng-model="resume.baseInfo.website" type="text" placeholder="http://www.baidu.com">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">Github</span>
+							    <input  ng-model="resume.baseInfo.github" type="text" placeholder="http://www.baidu.com">
+							  </label>
+							  
+
+							</div>
+							<div style="text-align:right">
+							<button class="button button-calm">保存</button></div>
+						</div>
+					</div>
+					<div ng-if="tabIndex==2">
+						 <h5>Json实时编辑器，MarkDown展示功能近期上线，敬请期待</h5>
+					</div>
+				</ion-scroll>
+			</div>
+		</div>
+</ion-view>
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view style="right:10px;width:240px;height:150px">
+    <ion-header-bar>
+    	<div class="buttons">
+	    <button ui-sref="resume" class="button button-clear"><i class="ion-ios-eye"></i></button>
+	  </div>
+
+      <h1 class="title" style="font-size:40px"><i class="ion-person"></i></h1>
+      <div class="buttons">
+	    <button ng-click="sendResume()" class="button button-clear"><i class="ion-paper-airplane"></i></button>
+	  </div>
+    </ion-header-bar>
+    <ion-content>
+      <div class="row row-wrap" style="text-align:left;padding-left:20px">
+      	<div class="col col-100" style="">
+      			刘君
+      	</div>
+      	<div class="col col-100">
+      			Tel:18251888949
+      	</div>
+      	<div class="col col-100">
+      			Mail:18251888949@163.com
+      	</div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

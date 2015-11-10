@@ -1,0 +1,206 @@
+/**
+ * Created by xun on 2015/10/26 0026.
+ */
+
+ionicApp.controller('categoryController', ['$scope', '$state', 'GET', function(scope, state, GET) {
+    scope.topCategorys = [];
+    scope.categoryDetail = [];
+
+    //获取所有的顶级分类列表
+    GET('/mobile/default/index/ajax_category?cid:0', null).then(
+        function(result){
+            console.log(result);
+            scope.topCategorys = result.data;
+            if(scope.topCategorys.length>0){
+                loadChildCategory(scope.topCategorys[0].id);
+            }
+        },
+        function(result){
+            console.log(result);
+        }
+    );
+
+    var loadChildCategory = function(cid){
+        GET('/mobile/default/index/ajax_category', {cid: cid}).then(
+            function(result){
+                //对数据进行3个一行的处理
+                var arr = [], len = result.data.length;
+                while(len>0){
+                    var index = len>3?3:len;
+                    arr.push(result.data.splice(0,index));
+                    len = result.data.length;
+                }
+                scope.categoryDetail = arr;
+            },
+            function(result){
+                console.log(result);
+            }
+        );
+    };
+
+    scope.changeCategory = function(cid){
+        loadChildCategory(cid);
+    }
+}]).controller('goodsListController', ['$scope', '$state', 'GET', '$stateParams', function(scope, state, GET, stateParams) {
+    scope.view = {
+        list: [],
+        count: 0,
+        filter: {
+            id: stateParams.id,
+            keywords: null,
+            type:null,
+            page: 0
+        }
+    };
+    scope.doRefresh = function(){
+        scope.view.filter.page = 0;
+        loadGoods();
+    };
+    scope.loadMore = function(){
+        scope.view.filter.page ++;
+        loadGoods();
+    };
+    scope.shouldLoadMore = function(){
+        var status = scope.view.list.length < Number(scope.view.count);
+        return status;
+    };
+    scope.goDetail = function(event){
+        state.go('tabs.goodsDetail', {id: 1111});
+    };
+    scope.search = function(){
+        scope.view.filter.page = 0;
+        loadGoods();
+    };
+    scope.typeSelect = function(value){
+        if(value == 'all'){
+            scope.view.filter.type = null;
+        }
+        else if(value == 'new'){
+            scope.view.filter.type = 'new';
+        }
+        scope.view.filter.page = 0;
+        loadGoods();
+        scope.fadein('type');
+    };
+
+    var loadGoods = function(){
+        GET('/mobile/default/category/index', scope.view.filter).then(
+            function(result){
+                console.log(result);
+                if(scope.view.filter.page == 0){
+                    scope.view.list = [];
+                }
+                for(var i in result.data.goodslist){
+                    scope.view.list.push(result.data.goodslist[i]);
+                }
+                scope.view.count = result.data.count;
+                scope.$broadcast('scroll.refreshComplete');
+                scope.$broadcast('scroll.infiniteScrollComplete');
+            },
+            function(result){
+                console.log(result);
+                scope.$broadcast('scroll.refreshComplete');
+                scope.$broadcast('scroll.infiniteScrollComplete');
+            }
+        );
+    };
+
+    //默认加载
+    loadGoods();
+}]).controller('GoodsDetailTabCtrl', ['$scope', '$state', 'GET', 'POST', '$stateParams', '$ionicSlideBoxDelegate', '$ionicModal', function(scope, state, GET, POST, stateParams, ionicSlideBoxDelegate, ionicModal) {
+    scope.goodsDetail = 'goodsPicture';//goodsPicture,goodsInfo,goodsRecom
+    scope.cart = {
+        quick: 1,
+        parent: 0,
+        number: 1,
+        goods_id: stateParams.gid,
+        spec: []
+    };
+    scope.view = {
+        goods: null,
+        reply: {
+            id: stateParams.gid,
+            type: 0,
+            page: 1
+        },
+        replys: [],
+        replyCount: 0
+    };
+
+    //console.log('CharactTabCtrl');
+    scope.changeGoodsNav = function(value){
+        scope.$apply(function(){
+            scope.goodsDetail = value;
+        });
+    };
+    //获取
+    GET('/mobile/default/goods/goods_info', {gid: stateParams.gid}).then(
+        function(result){
+            scope.view.goods = result.data;
+            ionicSlideBoxDelegate.$getByHandle('goods-pictures').update();
+            result.data.goods_info.properties.spe = result.data.goods_info.properties.spe || [];
+            for(var i in result.data.goods_info.properties.spe){
+                var item = result.data.goods_info.properties.spe[i];
+                item.values = item.values || [];
+                scope.cart.spec.push(item.name+':'+item.values[0].id);
+            }
+        },
+        function(result){
+
+        }
+    );
+    //更改商品的属性值
+    scope.changeGoodsSpec = function(value){
+        var key = value.split(':')[0];
+        for(var i in scope.cart.spec){
+            var item = scope.cart.spec[i];
+            if(item.split(':')[0] == key){
+                scope.cart.spec.splice(i, 1, value);
+                break;
+            }
+        }
+    };
+    //加入购物车
+    scope.addToCart = function(){
+        var data = {
+            quick: scope.cart.quick,
+            parent: scope.cart.parent,
+            goods_id: stateParams.gid,
+            number: scope.cart.number,
+            spec: []
+        };
+        for(var i in scope.cart.spec){
+            var item = scope.cart.spec[i];
+            data.spec.push(item.split(':')[1]);
+        }
+        POST('/mobile/default/flow/add_to_cart', {goods: data}).then(
+            function(result){
+                var modal = ionicModal.fromTemplate('添加成功', {
+                    animation: 'slide-in-up',
+                    scope: scope
+                }).show();
+            },
+            function(result){
+                var pop = ionicPopup.show({
+                    //template: '添加成功',
+                    title: '添加成功'
+                });
+                setTimeout(function(){
+                    pop.close();
+                },2000)
+            }
+        );
+    };
+    //获取评论
+    var loadReply = function(){
+        GET('/mobile/default/goods/comment_list', scope.view.reply).then(
+            function(result){
+                scope.view.replys = result.data.comments;
+                scope.view.replyCount = result.data.count;
+            },
+            function(result){}
+        );
+    };
+
+    loadReply();
+}]);

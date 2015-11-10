@@ -1,0 +1,25 @@
+ionicApp
+.controller('CartTabCtrl', ['$scope','CartService',function($scope,CartService) {
+  console.log('CartTabCtrl');
+  $scope.checked = false;
+  $scope.chooseShop = function(){
+    console.log('选择了整个店铺');
+    $scope.checked = !$scope.checked
+  }
+
+  $scope.$on('$ionicView.loaded',function(){
+  	var promise = CartService.ajax_cart()
+    promise
+    .then(function(data){
+      console.log(data)
+      if(data.code == 0){
+        console.log(data)
+      }else{
+        console.log('有错误')
+      }
+    },function(data){
+      console.log('服务器/数据库故障')
+    })
+  })
+
+}])

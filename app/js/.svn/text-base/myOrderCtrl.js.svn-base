@@ -1,0 +1,9 @@
+ionicApp
+.controller('myOrderCtrl',['$scope','$ionicTabsDelegate',function($scope,$ionicTabsDelegate){
+  console.log('myOrderCtrl')
+  $scope.chooseOrderTabIndex = 0
+  $scope.chooseOrderTab = function(index){
+    $scope.chooseOrderTabIndex=index
+    $ionicTabsDelegate.$getByHandle('orderTabDelegate').select(index)
+  }
+}])

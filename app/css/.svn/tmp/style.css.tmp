@@ -1,0 +1,845 @@
+.clear{ clear:both} 
+.back-text {display: none}
+/*
+@about:headbar 颜色
+*/
+.headbar {
+	background-color:#ED5F6D;
+	color:#fff;
+	font-weight: 500;
+}
+
+/*
+@about:padding:0;
+*/
+.padZero {
+	padding:0;
+}
+
+/*
+@about:首页 头上的headBanner 的高度;
+*/
+.headBanner{
+	height:112;
+	background-color: #f00
+}
+
+/*
+@about:幻灯片的页脚 放置右下角;
+*/
+.headBanner .slider-pager {
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+    width: 100%;
+    height: 15px;
+    text-align: right;
+}
+
+/*
+@about:幻灯片页脚颜色改成白色;
+*/
+.headBanner .slider-pager .slider-pager-page {
+	color:#fff;
+	font-size: 10px;
+}
+
+/*
+@about:首页四个NavBtn 设置居中;
+*/
+.navCol {
+	text-align: center;
+}
+/*
+@about:首页四个NavBtn的图片显示大小;
+*/
+.navImg {
+	width:45px;
+	height:45px;
+}
+
+/*
+@about:首页广告区域;
+*/
+.ads {
+	height:131px;
+	border: 1px solid #f2f2f2
+}
+/*
+@about:左侧广告;
+*/
+.leftad {
+	border-right:1px solid #f2f2f2;
+	height:131px;
+}
+/*
+@about:右侧广告;
+*/
+.rightad{
+	height:65px;
+}
+/*
+@about:右侧广告 奇数带下边框;
+*/
+.rightad:nth-child(odd){
+	border-bottom: 1px solid #f2f2f2;
+}
+/*
+@about:中间的Banner 样式;
+*/
+.centerBanner {
+	padding:10px;
+	height:150px;
+	background-color: #f2f2f2;
+}
+/*
+@abut:中间的banner Item的样式;
+*/
+.centerBannerItem {
+	background-color: #fff;
+	border-right:solid 1px #f2f2f2;
+	height:100%;
+}
+
+/*
+@about:一行内商品列表 整体样式;
+*/
+.lineListView {
+	height:160px;
+	width: 100%;
+	padding-bottom:10px;
+}
+
+/*
+@about:商品列表头部样式;
+*/
+.listViewHead {
+	padding:10px;
+	height:32px;
+	background-color: #fff;
+}
+/*
+@about:商品列表头部样式 左侧 ;
+*/
+.listViewHead .listViewHeadLeft {
+	text-align: left;
+}
+/*
+@about:商品列表头部样式 右侧;
+*/
+.listViewHead .listViewHeadRight {
+	text-align: right;
+}
+/*
+@about:商品列表头部样式 装饰的|;
+*/
+.decoration {
+	border-left:4px solid #f00;
+}
+/*
+@about:一行内商品列表内容样式;
+*/
+.lineListViewContent {
+	background-color: #fff;
+	height: 148px;
+	padding:10px;
+}
+/*
+@about:一行内商品单品样式;
+*/
+.lineListViewItem {
+	height:100%;
+	width:100px;
+	background-color: #b2b2b2;
+	margin-right:12px;
+	display: inline-block;
+	max-width: 100px;
+	min-width: 100px;	
+}
+/*
+@about:一行内商品单品图片样式;
+*/
+.lineImg {
+	height:100px;
+	width:100px;
+	background-color: #ED5F6D;
+}
+/*
+@about:一行内商品单品价格样式;
+*/
+.linePrice {
+	position: relative;
+	top:88px;
+	width: 100%;
+	height: 12px;
+	background-color: #000;
+	opacity: 0.3;
+	font-size: 12px;
+	color:#fff;
+	text-align: right;
+	line-height: 12px;
+}
+
+.linePrice:first-letter {
+	font-size: 80%;
+}
+/*
+@about:一行内商品单品标题样式;
+*/
+.lineTitle {
+	text-align: center;
+	padding:4px 0;
+}
+
+/*
+@about:单行商品整体样式;
+*/
+.lightListView {
+	background: #fff;
+}
+.lightListViewContent {
+	padding:10px;
+	background-color: #fff;
+}
+
+/*
+@about:单行商品单品样式;
+*/
+.lightListViewItem {
+	height:85px;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: solid 1px #f2f2f2;
+	padding: 8px 0 6px 0;
+}
+
+/*
+@about:单行商品的图片样式;
+*/
+.lightImg {
+	max-width: 100px;
+	height:70px;
+	background-color: #f00;
+	margin-right:10px;
+}
+
+/*
+@about:单行商品的信息样式;
+*/
+.lightInfo {
+	padding-right: 10px;
+}
+
+/*
+@about:单行商品的标题样式;
+*/
+.lightTitle{
+	color:#a2a2a2;
+	font-weight: 500;
+	line-height: 23px;
+	display: -webkit-box;
+	display: -moz-box;
+	margin:0;
+	word-break:break-all;
+	-webkit-line-clamp:1;
+	-moz-line-clamp:1;
+	-webkit-box-orient: vertical;
+	overflow:hidden
+}
+
+/*
+@about:单上商品价格样式;
+*/
+.lightPrice{
+	line-height: 23px;
+}
+
+/*
+@about:单品商品价格 现价;
+*/
+.lightPrice .nowPrice {
+	color:#f00;
+	font-weight: 500;
+	display: inline-block;
+}
+
+/*
+@about:单品商品价格 现价第一个字母略小;
+*/
+.lightPrice .nowPrice:first-letter{
+	font-size: 80%;
+}
+
+/*
+@about:单品商品价格 原价;
+*/
+.lightPrice .originPrice {
+	color:#b2b2b2;
+	font-size: 80%;
+	text-decoration: line-through;
+	display: inline-block;
+}
+
+/*
+@about:单品商品其余信息;
+*/
+.lightInfo{
+	line-height: 23px;
+	color:#b2b2b2;
+}
+
+/*
+@about:单品单行整体样式 ;
+*/
+
+.weightListView {
+	background-color: #fff;
+}
+
+/*
+@about:单品单行内容样式;
+*/
+.weightListViewContent {
+	background-color: #f2f2f2;
+	width: 100%;
+	padding: 10px
+}
+/*
+@about:单品单行单品样式;
+*/
+.weightListViewItem {
+	height:192px;
+	width:100%;
+	background-color: #fff;
+	border-bottom:10px solid #f2f2f2;
+}
+/*
+@about:单品单行图片样式;
+*/
+.weightImg {
+	width: 100%;
+	height:138px;
+	background-color: #f00;
+}
+/*
+@about:单品单行商品描述;
+*/
+.weightDesp {
+	padding:6px 8px;
+	position: relative;
+	top:114px;
+	width: 100%;
+	height: 24px;
+	background-color: #000;
+	opacity: 0.3;
+	font-size: 12px;
+	color:#fff;
+	text-align: left;
+	line-height: 12px;
+	display: -webkit-box;
+	display: -moz-box;
+	margin:0;
+	word-break:break-all;
+	-webkit-line-clamp:1;
+	-moz-line-clamp:1;
+	-webkit-box-orient: vertical;
+	overflow:hidden
+}
+/*
+@about:单品单行商品信息样式;
+*/
+.weightInfo {
+	height:54px;
+	padding:10px 8px;
+}
+/*
+@about:单品单行商品标题样式;
+*/
+.weightTitle {
+	color:#a2a2a2;
+	font-weight: 500;
+	line-height: 16px;
+	display: -webkit-box;
+	display: -moz-box;
+	margin:0;
+	word-break:break-all;
+	-webkit-line-clamp:1;
+	-moz-line-clamp:1;
+	-webkit-box-orient: vertical;
+	overflow:hidden;
+}
+
+
+/*
+@about:单品商品价格 现价;
+*/
+.weightPrice .nowPrice {
+	color:#f00;
+	font-weight: 500;
+	display: inline-block;
+	opacity: 0.8;
+	font-size: 12px;
+}
+
+/*
+@about:单品商品价格 现价第一个字母略小;
+*/
+.weightPrice .nowPrice:first-letter{
+	font-size: 80%;
+}
+
+/*
+@about:单品商品价格 原价;
+*/
+.weightPrice .originPrice {
+	color:#b2b2b2;
+	font-size: 80%;
+	text-decoration: line-through;
+	display: inline-block;
+}
+/*
+@about:推荐品牌列表样式;
+*/
+.brandListView {
+	padding: 10px 10px 0 10px;
+	width:100%;
+}
+
+/*
+@about:单行品牌样式;
+*/
+.brandListLine {
+	border-top:solid 1px #f2f2f2;
+	border-left:solid 1px #f2f2f2;
+	border-right:solid 1px #f2f2f2;
+	height: 56px;
+}
+/*
+@about:最后一行加上底边框;
+*/
+.brandListLine:last-child{
+	border-bottom: solid 1px #f2f2f2;
+}
+/*
+@about:单个品牌样式;
+*/
+.brandListLine .brandItem {
+	border-right:solid 1px #f2f2f2;
+	border-bottom:solid 1px #f2f2f2;
+}
+
+/*
+@about:单个品牌样式 每行最后一个没有右边框;
+*/
+.brandListLine .brandItem:last-child{
+	border-right: 0;	
+}
+
+/*
+@about:单个品牌 图片样式;
+*/
+.brandItem img {
+	width: 100%;
+	height: 100%;
+}
+/*
+@about:隐藏原生的tab 标签;
+*/
+.favorPage .tab-nav{
+	display: none;
+}
+/*
+@about:修改原声的tab标签样式;
+*/
+.favorPage .tab-title{
+	border:none;
+	height:24px;
+}
+/*
+@about:sub header 中块元素内容居中;
+*/
+.favorTabDiv {
+	text-align: center;
+}
+/*
+@about:标签被选中状态;
+*/
+.activeTabBtn {
+	border:solid 1px #f00;
+	background-color: #ED5F6D;
+	color:#fff;
+	border-radius: 24px;
+	padding:4px 20px;
+	font-weight: 500;
+	width:112px;
+	min-width: 112px;
+}
+/*
+@about:标签未选中状态;
+*/
+.normalTabBtn {
+	border:none;
+	background-color: #fff;
+	color:#b2b2b2;
+	border-radius: 24px;
+	padding:4px 20px;
+	font-weight: 500;
+	width:112px;
+	min-width: 112px;
+}
+/*
+@about:按钮鼠标悬浮样式;
+*/
+.button:hover {
+	color:#fff;
+}
+/*
+@about:按钮点击样式;
+*/
+.button.avtive,.button.activated{
+	background-color: #fff;
+	color:#b2b2b2;
+	border:none;
+}
+
+/*
+@about:tab标签选中状态;
+*/
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+	color: #ED5F6D;
+}
+
+/*
+@about:定义购物车界面店铺整体样式;
+*/
+.shop{
+	margin-bottom: 12px;
+	background-color: #fff;
+}
+/*
+@about:定义店铺信息样式;
+*/
+.shopInfo {
+	height:44px;
+	border-bottom: solid 1px #f2f2f2;
+	padding:10px 8px;
+}
+/*
+@about:定义店铺全选按钮样式;
+*/
+.shopChooseRadio {
+	font-size: 18px;
+	line-height: 24px;
+	padding:3px 0;
+	opacity: 0.5;
+
+}
+/*
+@about:定义店铺logo样式;
+*/
+.shopImg img{
+	width: 24px;
+	height:24px;
+}
+/*
+@about:定义店铺名样式;
+*/
+.shopName {
+	opacity: 0.5;
+	padding-left: 16px;
+}
+/*
+@about:定义购物车每个商品条目的样式;
+*/
+.cartItem {
+	height: 80px;
+	padding:10px 8px;
+}
+/*
+@about:定义商品选择radio 样式;
+*/
+.itemChooseRadio {
+	font-size: 18px;
+	line-height:60px;
+	padding:21px 0;
+	opacity: 0.5;
+
+}
+/*
+@about:修改ionic 原生样式;
+*/
+.item-complex .item-content, .item-radio .item-content{
+	padding:0;
+}
+/*
+@about:定义商品图片的样式;
+*/
+.itemImg img{
+	width:60px;
+	height: 60px;
+}
+/*
+@about:新增col-30样式;
+*/
+.col-30 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%; 
+}
+/*
+@about:定义商品条目具体信息样式;
+*/
+.cartItemDetail {
+	height: 20px;
+}
+/*
+@about:定义购物车商品名称样式;
+*/
+.cartItemName {
+	font-size: 1em;
+}
+/*
+@about:定义购物车商品单位样式;
+*/
+.cartItemUnit {
+	font-size: 80%;
+	opacity: 0.8;
+}
+/*
+@about:定义购物车商品价格样式;
+*/
+.cartItemPrice {
+	color:#f00;
+	float: left;
+	font-size: 1em;
+}
+/*
+@about:定义+、-按钮组整体样式;
+*/
+.actionBtns {
+	position: absolute;
+	bottom:2px;
+	right:0;
+	border:solid 1px #b2b2b2;
+	height:26px;
+	border-radius: 5px;
+}
+/*
+@about:定义-按钮样式;
+*/
+.actionMinus {
+	display: inline-block;
+	width: 25px;
+	height:24px;
+	border-right: solid 1px #b2b2b2;
+	line-height: 24px;
+	text-align: center;
+}
+/*
+@about:定义+按钮样式;
+*/
+.actionAdd {
+	display: inline-block;
+	width: 25px;
+	height:24px;
+	border-left: solid 1px #b2b2b2;
+	line-height: 24px;
+	text-align: center;
+}
+/*
+@about:定义购物车商品数量按钮样式;
+*/
+.cartItemCount {
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+}
+/*
+@about:定义结算整体样式
+*/
+.checkout {
+	height:55px;
+	border-bottom: solid 1px #f2f2f2;
+	width:100%;
+}
+/*
+@about:定义全选整体样式;
+*/
+.allInRadio {
+	font-size: 18px;
+	line-height: 24px;
+	opacity: 0.5;
+	padding:15px 8px;
+}
+/*
+@about:定义账单整体样式;
+*/
+.billInfo {
+	text-align: right;
+}
+
+/*
+@about:定义账单价格样式;
+*/
+.billprice {
+	color:#f00;
+}
+/*
+@about:定义结算部分右侧-右样式;
+*/
+.block1 {
+	display: inline-block;
+	float: right;
+}
+/*
+@about:定义结算部分右侧-左样式;
+*/
+.block2 {
+	display: inline-block;
+	float: right;
+	padding:10px 10px;
+}
+/*
+@about:定义结算按钮样式;
+*/
+.checkoutBtn {
+	height:56px;
+	width:54px;
+}
+
+.orderTabDiv {
+	text-align: center;
+	padding:0 16px;
+}
+
+.orderTabDiv:nth-child(even){
+	border-left: solid 1px #f2f2f2;
+	border-right: solid 1px #f2f2f2;
+}
+
+.normalOrderTabBtn {
+	opacity: 0.5;
+	font-weight: 100;
+	line-height: 39px;
+	height: 39px;
+}
+
+.activeOrderTabBtn {
+	color:#ED5F6D;
+	font-weight: 500;
+	line-height: 39px;
+	height: 39px;
+	border-bottom: solid 3px #ED5F6D;
+}
+
+.orderPage .tab-nav{
+	display: none;
+}
+
+
+/*
+@about:单行商品整体样式;
+*/
+.orderListView {
+	background: #fff;
+}
+.orderListViewContent {
+	padding:10px;
+	background-color: #fff;
+}
+
+/*
+@about:单行商品单品样式;
+*/
+.orderListViewItem {
+	height:110px;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: solid 1px #f2f2f2;
+	padding: 10px 0 10px 0;
+}
+
+/*
+@about:单行商品的图片样式;
+*/
+.orderImg {
+	max-width: 100px;
+	height:90px;
+	background-color: #f00;
+	margin-right:10px;
+}
+
+/*
+@about:单行商品的信息样式;
+*/
+.orderInfo {
+	padding-right: 10px;
+	position: relative;
+}
+
+/*
+@about:单行商品的标题样式;
+*/
+.orderTitle{
+	color:#a2a2a2;
+	font-weight: 500;
+	line-height: 23px;
+	display: -webkit-box;
+	display: -moz-box;
+	margin:0;
+	word-break:break-all;
+	-webkit-line-clamp:2;
+	-moz-line-clamp:2;
+	-webkit-box-orient: vertical;
+	overflow:hidden
+}
+
+.actionOrderBtn {
+	position: absolute;
+	border-radius: 5px;
+	border: solid 1px #ED5F6D;
+	width: 80px;
+	min-width: 80px;
+	text-align: center;
+	color:#ED5F6D;
+	bottom: 0;
+	right: 10px;
+}
+.place2favor {
+	word-wrap: break-word;
+	word-break: normal;
+}
+/*=================================个人中心===============================*/
+.user-setting{background-color: #f6f6f6;}
+.user-list{margin-bottom: 1.3em; background-color: #fff; position: relative;}
+.user-header>img{max-width: 100px; border-radius: 100px; display: inherit; text-align: center; margin: 0 auto; margin-bottom: 10px;}
+.user-header .alias-name{border: 2px solid #fff; border-radius: 10px;margin: 3px 0px; display: inline-block; padding: 0px 20px;}
+.user-header .nav-btn{position: absolute; top: 10px; width: 45px; height: 45px; display: inline-block;}
+.user-header .left-nav{left: 10px;}
+.user-header .right-nav{right: 10px;}
+.user-item{width:100%; box-sizing: border-box; padding: 0em; line-height: 40px;
+	position: relative;overflow: hidden;}
+/*.user-item:active,.user-item.activeted{background-color: #efefef;}*/
+.user-item{width:100%; box-sizing: border-box; padding: 1em; }
+.user-item.under-line{border-bottom: 1px solid #efefef;}
+.user-item>*{display: inline-block; font-size: 1.2em;}
+.user-item>.content{padding: 0px 5px; margin-bottom: 0px;}
+.user-item>.nav{float: right; color: #bcbdbf;}
+.user-item table{width: 100%;}
+.user-item table td{text-align: center; font-size: 12px;}
+.user-setting .list>.item{border-color: #f6f6f6}
+.setting-icon{background: url("/img/setting-icon.png") no-repeat; width: 35px; height: 35px; display: inline-block; margin-top: 10px; background-size: cover; background-color: none;}
+.setting-icon.order-icon{background-position: 0px 0px; height: 35px;}
+.setting-icon.receive-money{background-position: 0px 0px; height: 35px;}
+.setting-icon.receive-goods{background-position: 0px -35px; height: 35px;}
+.setting-icon.exchange-goods{background-position: 0px -70px; height: 35px;}
+.setting-icon.change-passwords{background-position: 0px -140px; height: 35px;}
+.setting-icon.change-paywords{background-position: 0px -175px; height: 35px;}
+.setting-icon.my-cards{background-position: 0px -210px; height: 35px;}
+.setting-icon.my-messages{background-position: 0px -245px; height: 35px;}
+.setting-icon.about-us{background-position: 0px -280px; height: 35px;}

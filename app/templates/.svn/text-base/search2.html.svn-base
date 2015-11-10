@@ -1,0 +1,73 @@
+<ion-modal-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="headbar">
+    <div class="buttons">
+        <button ng-click="closeResultModal()" style="color:#fff" class="button icon-left ion-ios-arrow-left button-clear"></button>
+    </div>
+        <div class="item item-input-inset" style="background-color:#bf4b56;border:none;margin-left:12px;margin-right:12px;width:100%">
+            <label class="item-input-wrapper" style="background-color:#bf4b56">
+                <i style="color:#fff;font-size:18px" class="icon ion-search placeholder-icon"></i>
+              <input type="text" placeholder="搜索商品" style="color:#fff">
+            </label>
+        </div>
+    </ion-header-bar>    
+<ion-content>
+   <!-- 首页商品 ListView 样式 2 一个占据一行 比较轻量-->
+   <div class="lightListView">
+     
+     <div class="lightListViewContent">
+       <div class="lightListViewItemOne">
+         <div class="lightListViewItem row  padZero">
+           <div class="col col-33 lightImg padZero">
+             <img src="img/item2.png" />
+           </div>
+           <div class="lightInfo col col-66 padZero">
+             <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+             <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+             <div class="lightInfoElse">
+
+               <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+               <span style="float:left">已售12123件
+               </span>
+             </div>
+           </div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       <div class="lightListViewItemOne">
+         <div class="lightListViewItem row  padZero">
+           <div class="col col-33 lightImg padZero">
+             <img src="img/item2.png" />
+           </div>
+           <div class="lightInfo col col-66 padZero">
+             <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+             <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+             <div class="lightInfoElse">
+               <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+               <span style="float:left">已售12123件
+               </span>
+             </div>
+           </div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       <div class="lightListViewItemOne">
+         <div class="lightListViewItem row  padZero">
+           <div class="col col-33 lightImg padZero">
+             <img src="img/item2.png" />
+           </div>
+           <div class="lightInfo col col-66 padZero">
+             <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+             <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+             <div class="lightInfoElse">
+               <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+               <span style="float:left">已售12123件
+               </span>
+             </div>
+           </div>
+         </div>
+         <div class="clear"></div>
+       </div>
+     </div>
+   </div>
+</ion-content>
+</ion-modal-view>

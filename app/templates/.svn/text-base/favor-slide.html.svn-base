@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-header-bar class="bar headbar">
+    <label class="title">感兴趣的商品</label>
+  </ion-header-bar>
+  <ion-content>
+    <!-- 感兴趣 按钮点击 页面 切换-->
+    <div class="favorSlideBtn"></div>
+    <!-- 感兴趣 内容幻灯片 格式 -->
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+    	<!-- 感兴趣 我收藏的商品 -->
+      <ion-slide>
+        <div class="favorSlideContent">
+        	<h1>我收藏</h1>
+        	<!-- 感兴趣 ListView 样式 2 一个占据一行 比较轻量-->
+        	<div class="lightListView"></div>
+        	<!-- 感兴趣 ListView 样式3 一个一块 比较重 -->
+        	<div class="weightListView"></div>
+        </div>
+      </ion-slide>
+      <!-- 感兴趣 我浏览的商品 -->
+      <ion-slide>
+        <div class="favorSlideContent">
+        	<h1>我浏览</h1>
+        	<!-- 感兴趣 ListView 样式 2 一个占据一行 比较轻量-->
+        	<div class="lightListView"></div>
+        	<!-- 感兴趣 ListView 样式3 一个一块 比较重 -->
+        	<div class="weightListView"></div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

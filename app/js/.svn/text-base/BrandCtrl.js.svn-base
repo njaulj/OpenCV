@@ -1,0 +1,86 @@
+ionicApp
+.controller('BrandCtrl',['$scope','HomeService',function($scope,HomeService){
+	
+	console.log($scope.chooseCharactIndex)
+
+	$scope.brandSelectId = 0
+	$scope.$on('$ionicView.loaded',function(){
+		var promise6 = HomeService.ajax_category(0)
+		promise6
+		.then(function(data){
+		  if(data.code == 0){
+		    console.log(data)
+		    $scope.categories = data.data
+		  }else{
+		    console.log('有错误')
+		  }
+		},function(data){
+		  console.log('服务器/数据库故障')
+		})
+
+		var  searchObj = {
+		    'id':$scope.chooseCharactIndex>0?$scope.chooseCharactIndex:'',
+		    'keywords':'',
+		    'brand':'',
+		    'price_max':'',
+		    'price_min':'',
+		    'type':'',
+		    'sort':'',
+		    'order':'',
+		    'page':1
+		  }
+
+		  var promise7 = HomeService.ajax_search(searchObj)
+		  promise7
+		  .then(function(data){
+		    if(data.code == 0){
+		      console.log(data)
+		      data.data.parame.brands.shift()
+		      $scope.brandlist = data.data.parame.brands
+		      $scope.items = data.data.goodslist
+		    }else{
+		      console.log('有错误')
+		    }
+		  },function(data){
+		    console.log('服务器/数据库故障')
+		  })
+	})
+
+	$scope.$on('charactchanged',function(){
+		$scope.brandSelectId = 0
+		$scope.brandSelect($scope.brandSelectId)
+	})
+
+	$scope.brandSelect = function(id){
+		// console.log(brand_name)
+		$scope.brandSelectId = id
+		var  searchObj = {
+		    'id':$scope.chooseCharactIndex>0?$scope.chooseCharactIndex:'',
+		    'keywords':'',
+		    'brand':id,
+		    'price_max':'',
+		    'price_min':'',
+		    'type':'',
+		    'sort':'',
+		    'order':'',
+		    'page':1
+		  }
+
+		  var promise7 = HomeService.ajax_search(searchObj)
+		  promise7
+		  .then(function(data){
+		    if(data.code == 0){
+		      console.log(data)
+		      data.data.parame.brands.shift()
+		      $scope.brandlist = data.data.parame.brands
+		      $scope.items = data.data.goodslist
+		    }else{
+		      console.log('有错误')
+		    }
+		  },function(data){
+		    console.log('服务器/数据库故障')
+		  })
+
+	}
+}])
+

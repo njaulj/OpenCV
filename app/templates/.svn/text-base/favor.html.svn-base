@@ -1,0 +1,128 @@
+<ion-view>
+  <ion-header-bar class="bar headbar">
+    <label class="title">感兴趣的商品</label>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader">
+    <div class="row  padZero">
+      <div class="col col-50 padZero favorTabDiv">
+        <button ng-click="chooseTab(0)" ng-class="chooseTabIndex?'button normalTabBtn':'button activeTabBtn'">我收藏的商品</button>
+      </div>
+      <div class="col col-50 padZero favorTabDiv">
+        <button ng-click="chooseTab(1)" ng-class="chooseTabIndex?'button activeTabBtn':'button normalTabBtn'">浏览过的商品</button>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content style="font-size:71.4%">
+    <ion-tabs delegate-handle="favorTabDelegate" class="tabs-light favorPage" style="border-bottom:solid 1px #f2f2f2">
+      <ion-tab title="我收藏的商品">
+        <ion-nav-view name="collect-tab">
+          <!-- 沿用首页定义的商品列表2 -->
+          <div class="lightListView">
+            <div class="lightListViewContent">
+              <div class="lightListViewItemOne">
+                <div class="lightListViewItem row  padZero">
+                  <div class="col col-33 lightImg padZero">
+                    <img src="img/item2.png" />
+                  </div>
+                  <div class="lightInfo col col-66 padZero">
+                    <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+                    <div class="lightInfoElse">
+
+                      <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                      <span style="float:left">已售12123件
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="lightListViewItemOne">
+                <div class="lightListViewItem row  padZero">
+                  <div class="col col-33 lightImg padZero">
+                    <img src="img/item2.png" />
+                  </div>
+                  <div class="lightInfo col col-66 padZero">
+                    <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+                    <div class="lightInfoElse">
+                      <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                      <span style="float:left">已售12123件
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="lightListViewItemOne">
+                <div class="lightListViewItem row  padZero">
+                  <div class="col col-33 lightImg padZero">
+                    <img src="img/item2.png" />
+                  </div>
+                  <div class="lightInfo col col-66 padZero">
+                    <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                    <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+                    <div class="lightInfoElse">
+                      <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                      <span style="float:left">已售12123件
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="浏览过的商品">
+        <ion-nav-view name="visit-tab">
+          <!-- 沿用首页定义的商品列表3 -->
+          <div class="weightListView">
+            <div class="weightListViewContent">
+              <div class="weightListViewItem">
+                <div class="weightImg">
+                  <img src="img/bigimg.jpeg" />
+                  <div class="weightDesp">商品商品商品描述商品商品商品描述</div>
+                </div>
+                <div class="weightInfo">
+                  <div class="weightTitle">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                  <div class="weightPrice">
+                    <span class="nowPrice">{{48|currency:'￥'}}</span>
+                    <span class="originPrice">{{99|currency:'￥'}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="weightListViewItem">
+                <div class="weightImg">
+                  <img src="img/bigimg.jpeg" />
+                  <div class="weightDesp">商品商品商品描述商品商品商品描述</div>
+                </div>
+                <div class="weightInfo">
+                  <div class="weightTitle">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                  <div class="weightPrice">
+                    <span class="nowPrice">{{48|currency:'￥'}}</span>
+                    <span class="originPrice">{{99|currency:'￥'}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="weightListViewItem">
+                <div class="weightImg">
+                  <img src="img/bigimg.jpeg" />
+                  <div class="weightDesp">商品商品商品描述商品商品商品描述</div>
+                </div>
+                <div class="weightInfo">
+                  <div class="weightTitle">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+                  <div class="weightPrice">
+                    <span class="nowPrice">{{48|currency:'￥'}}</span>
+                    <span class="originPrice">{{99|currency:'￥'}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+</ion-view>

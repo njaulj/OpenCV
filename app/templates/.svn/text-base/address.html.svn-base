@@ -1,0 +1,39 @@
+<ion-view>
+  <ion-header-bar class="bar headbar">
+    <label class="title">收货地址管理</label>
+  </ion-header-bar>
+  <ion-content style="font-size:71.4%;background-color:#f2f2f2">
+    <!-- 收货地址管理 -->
+    <div class="addresslist">
+    	<div class="address-name">吴法天</div>
+    	<div class="address-phone">182****5355</div>
+    	<div class="address-site">浙江省杭州市西湖区文三路477号华星科技大厦406</div>
+    	<div class="row row-center padZero action-btns">
+	 			<div  class="address-choose-btn"><i class="ion-ios-circle-outline"></i></div>
+	 			<div class="address-been-first">设为默认</div>
+	 			<div class="col col-60 col-offset-40 padZero">
+		 			<div class="address-delete"><i class="ion-ios-trash-outline"></i>删除</div>
+		 			<div class="address-edit"><i class="ion-compose"></i>编辑</div>
+	 			</div>
+	 		</div>
+    </div>
+    <div class="addresslist">
+    	<div class="address-name">吴法天</div>
+    	<div class="address-phone">182****5355</div>
+    	<div class="address-site">浙江省杭州市西湖区文三路477号华星科技大厦406</div>
+    	<div class="row row-center padZero action-btns">
+	 			<div  class="address-choose-btn"><i class="ion-ios-circle-outline"></i></div>
+	 			<div class="address-been-first">设为默认</div>
+	 			<div class="col col-60 col-offset-40 padZero">
+		 			<div class="address-delete"><i class="ion-ios-trash-outline"></i>删除</div>
+		 			<div class="address-edit"><i class="ion-compose"></i>编辑</div>
+	 			</div>
+	 		</div>
+    </div>
+    <!-- 收货地址管理  新增地址 按钮 -->
+    <div class="newAddressBtn"></div>
+  </ion-content>
+  <ion-footer-bar style="padding:0;height:54px;background-color:#f2f2f2">
+  	<button class="button button-block button-assertive" style="margin:0 22px;font-size:1.3em;height:40px">+新建地址</button>
+  </ion-footer-bar>
+</ion-view>

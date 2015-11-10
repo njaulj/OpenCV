@@ -1,0 +1,119 @@
+<ion-view class="charact-pane" hide-tabs="true" hide-nav-bar="true">
+  <ion-header-bar class="bar headbar item-input-inset title-words">
+    <div class="buttons">
+      <button class="button button-clear" style="color: #fff;margin-right: 12px;" ng-click="goBack()">
+        <i class="ion-ios-arrow-back"></i>
+      </button>
+    </div>
+    <!-- 搜索框 -->
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" placeholder="Search" ng-model="view.filter.keywords">
+    </label>
+    <!--<button class="button icon button-clear ion-ios-crop-strong" style="color: #fff;"></button>-->
+    <button class="button button-clear" style="color: #fff; font-size: 12px;" ng-click="search()">查询</button>
+  </ion-header-bar>
+  <ion-header-bar class="bar item-input-inset">
+    <div class="row row-center content-words">
+      <div class="col col-center responsive-sm" ng-click="fadein('type');">综合 <i class="icon ion-ios-arrow-down"></i></div>
+      <div class="col">销量 <i class="icon ion-arrow-up-b"></i></div>
+      <div class="col">价格 <i class="icon ion-arrow-up-b"></i></div>
+      <div class="col" ng-click="fadein('filter')">筛选 <i class="ion-podium icon"></i></div>
+    </div>
+  </ion-header-bar>
+  <ion-content class="goods-category  content-words" scroll="true">
+    <ion-refresher
+      pulling-text="下拉刷新..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list" style="margin-top: 44px;">
+      <a class="item item-thumbnail-left" ng-repeat="item in view.list" ng-click="routeRedirectProvider('tabs.goodsDetail', 'gid', '{{item.goods_id}}')">
+        <img src="http://www.ecshop_one.cn/{{item.goods_thumb}}">
+        <h3 ng-bind="item.name"></h3>
+        <p><span class="price1" ng-bind="item.shop_price"></span> <span class="price2" ng-bind="item.market_price"></span></p>
+        <p class="bottom">已售<span ng-bind="item.sales_count"></span>件</p>
+      </a>
+    </div>
+    <ion-infinite-scroll
+      ng-if="shouldLoadMore()"
+      on-infinite="loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+  <!--综合-->
+  <div class="charact-type pop-pane  content-words" fadein-directive="type">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="bg"></div>
+      <div class="list" btn-active-directive="typeSelect" single="true">
+        <a class="active-item item item-icon-right active" href="#" value="all">
+          综合
+          <i class="icon ion-ios-checkmark-empty"></i>
+        </a>
+        <a class="active-item item item-icon-right" href="#" value="new">
+          新品
+          <i class="icon ion-ios-checkmark-empty"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--筛选-->
+  <div class="charact-filter pop-pane  content-words" fadein-directive="filter">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="bar bar-header">
+        <button class="button button-clear" style="font-size: 14px;">取消</button>
+        <div class="title" style="font-size: 14px;">筛选</div>
+        <button class="button button-clear" style="font-size: 14px;">确定</button>
+      </div>
+      <ion-content style="bottom: 0px;">
+        <div class="buttons" btn-active-directive single="true">
+          <button class="active-item button button-outline button-small active">
+            <i class="ion-ios-checkmark-empty"></i>
+            仅看有货
+          </button>
+          <button class="active-item button button-outline button-small">
+            <i class="ion-ios-checkmark-empty"></i>
+            促销
+          </button>
+          <button class="active-item button button-outline button-small">
+            <i class="ion-ios-checkmark-empty"></i>
+            货到付款
+          </button>
+        </div>
+        <div class="list">
+          <a class="item" href="#">
+            品牌
+            <span class="item-note">
+              全部 <i class="icon ion-ios-arrow-right"></i>
+            </span>
+          </a>
+          <a class="item" href="#">
+            颜色
+            <span class="item-note">
+              全部 <i class="icon ion-ios-arrow-right"></i>
+            </span>
+          </a>
+          <a class="item" href="#">
+            尺码
+            <span class="item-note">
+              全部 <i class="icon ion-ios-arrow-right"></i>
+            </span>
+          </a>
+          <a class="item" href="#">
+            价格
+            <span class="item-note">
+              全部 <i class="icon ion-ios-arrow-right"></i>
+            </span>
+          </a>
+          <a class="item" href="#">
+            厚度
+            <span class="item-note">
+              全部 <i class="icon ion-ios-arrow-right"></i>
+            </span>
+          </a>
+        </div>
+      </ion-content>
+    </div>
+  </div>
+</ion-view>

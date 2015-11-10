@@ -1,0 +1,206 @@
+
+angular.module('ionicApp', ['ionic'])
+
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.backButton.text('').icon('ion-ios-arrow-left');
+  $ionicConfigProvider.navBar.alignTitle('center')
+<<<<<<< .mine
+  $ionicConfigProvider.templates.maxPrefetch(0)
+=======
+  //$ionicConfigProvider.views.maxCache(0);
+  //$ionicConfigProvider.platform.android.views.maxCache(0);
+  $ionicConfigProvider.templates.maxPrefetch(0);
+>>>>>>> .r17
+
+  $stateProvider
+    .state('tabs', {
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html",
+      controller:'TabCtrl'
+    })
+    .state('tabs.home', {
+      url: "/home",
+      views: {
+        'home-tab': {
+          templateUrl: "http://localhost:3000/templates/home.html",
+          controller: 'HomeTabCtrl'
+        }
+      }
+    })
+    .state('tabs.charact', {
+      url: "/charact",
+      views: {
+        'charact-tab': {
+          templateUrl: "templates/category.html",
+          controller: 'CharactTabCtrl'
+        }
+      }
+    })
+    .state('tabs.categoryDetail', {
+      url: "/tabs/goodsDetail",
+      views: {
+        'charact-tab': {
+          templateUrl: "templates/charact.html",
+          controller: 'CharactTabCtrl'
+        }
+      }
+    })
+    .state('tabs.goodsDetail', {
+      url: "/tabs/goodsDetail",
+      views: {
+        'charact-tab': {
+          templateUrl: "templates/goods-detail.html",
+          controller: 'CharactTabCtrl'
+        }
+      }
+    })
+    .state('tabs.favor', {
+      url: "/favor",
+      views: {
+        'favor-tab': {
+          templateUrl: "templates/favor.html",
+          controller: 'FavorTabCtrl'
+        }
+      }
+    })
+    
+    .state('tabs.cart', {
+      url: "/cart",
+      views: {
+        'cart-tab': {
+          templateUrl: "templates/cart.html",
+          controller: 'CartTabCtrl'
+        }
+      }
+    })
+    
+    .state('tabs.setting', {
+      url: "/setting",
+      views: {
+        'setting-tab': {
+          templateUrl: "templates/setting.html",
+          controller: 'SettingTabCtrl'
+        }
+      }
+    })
+
+    .state('tabs.myorder',{
+      url:'/myorder',
+      views:{
+        'home-tab':{
+          templateUrl:"templates/myorder.html?a=2",
+          controller:'myOrderCtrl'
+        }
+      }
+    })
+    .state('tabs.myorder1',{
+      url:'/myorder1',
+      views:{
+        'setting-tab':{
+          templateUrl:"templates/myorder.html",
+          controller:'myOrderCtrl'
+        }
+      }
+    })
+    .state('tabs.address',{
+      url:'/address',
+      views:{
+        'home-tab':{
+          templateUrl:"templates/address.html",
+          controller:'AddressCtrl'
+        }
+      }
+    })
+    ;
+    
+    
+
+
+   $urlRouterProvider.otherwise("/tab/home");
+
+})
+
+.controller('TabCtrl',function($scope,$ionicHistory){
+  console.log('TabCtrl')
+  $scope.goBack =function(){
+    $ionicHistory.goBack();
+  }
+  $scope.mediaWidth = window.innerWidth
+  $scope.mediaHeight = window.innerHeight
+  console.log($scope.mediaWidth,$scope.mediaHeight)
+})
+
+.controller('HomeTabCtrl', function($scope) {
+  console.log('HomeTabCtrl');
+})
+
+.controller('CharactTabCtrl', ['$scope',function($scope) {
+  console.log('CharactTabCtrl');
+}])
+
+.controller('FavorTabCtrl', ['$scope','$ionicTabsDelegate','$timeout',function($scope,$ionicTabsDelegate,$timeout) {
+  console.log('FavorTabCtrl');
+  $scope.chooseTabIndex = 0;
+  $scope.chooseTab = function(index){
+    $scope.chooseTabIndex=index
+    $ionicTabsDelegate.$getByHandle('favorTabDelegate').select(index)
+  }
+
+
+}])
+
+.controller('CartTabCtrl', ['$scope',function($scope) {
+  console.log('CartTabCtrl');
+  $scope.checked = false;
+  $scope.chooseShop = function(){
+    console.log('选择了整个店铺')
+    $scope.checked = !$scope.checked
+  }
+}])
+
+.controller('SettingTabCtrl',['$scope',function($scope) {
+  console.log('SettingTabCtrl');
+}])
+
+.controller('myOrderCtrl',function($scope,$ionicTabsDelegate){
+  console.log('myOrderCtrl')
+  $scope.chooseOrderTabIndex = 0
+  $scope.chooseOrderTab = function(index){
+    $scope.chooseOrderTabIndex=index
+    $ionicTabsDelegate.$getByHandle('orderTabDelegate').select(index)
+  }
+})
+.controller('AddressCtrl',function($scope){})
+ 
+
+
+.directive('btnActiveDirective', function(){
+    return {
+      restrict:'ACE',
+      replace:false,
+      template:"",
+      scope:false,
+      link:function(scope, elem, attrs){
+        var method = attrs['btnActiveDirective'];
+        var target = angular.element(elem);
+        var single = target.attr("single");
+        target.bind('click', function(event){
+          if(single == true || single == 'true'){
+            var items = document.querySelectorAll('.active-item');
+            for(var i= 0,len=items.length; i<len; i++){
+              angular.element(items[i]).removeClass('active');
+            }
+          }
+          angular.element(event.target).addClass('active');
+
+          var value = angular.element(this).attr("value");
+          if(typeof scope[method] == 'function'){
+            scope[method](value);
+          }
+        });
+      }
+    };
+})

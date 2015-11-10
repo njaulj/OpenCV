@@ -1,0 +1,263 @@
+<ion-view hide-nav-bar="true"  hide-tabs="false">
+ 	<ion-header-bar class="bar headbar">
+    <div class="buttons no-text">
+    </div>
+ 		<label  class="title">蔓藤商城</label>
+    <div  class="buttons">
+      <button ng-click="openSearchModal()" class="button button-clear"><i  class="icon ion-ios-search" style="color:#fff"></i></button>
+    </div>
+ 	</ion-header-bar>
+  <div class="charactBars" style="margin-top:44px">
+    <ion-scroll direction="x" scrollbar-x="false">
+      <div class="row padZero" style="width:600px">      
+        <div ng-click="chooseCharact(0)" ng-class="chooseCharactIndex==0?'activeCharactBar':'normalCharactBar'">
+          全部
+        </div>
+        <div ng-click="chooseCharact(category.id)" ng-class="chooseCharactIndex==category.id?'activeCharactBar':'normalCharactBar'" ng-repeat="category in categories">
+          {{category.name}}
+        </div>
+        
+      </div>
+    </ion-scroll>
+    <div id="navCharactBlock" class="navCharactBlock" style="margin-top:44px">
+      <div class="row padZero text-center row-wrap">
+        <div ng-click="chooseCharact(0)" ng-class="chooseCharactIndex==0?'col col-25 active-navCharactBtn':'col col-25 navCharactBtn'">全部</div>
+        <div ng-click="chooseCharact(category.id)" ng-class="chooseCharactIndex==category.id?'col col-25 active-navCharactBtn':'col col-25 navCharactBtn'" ng-repeat="category in categories">{{category.name}}</div>
+        
+      </div>
+      <div class="row text-center" style="background-color:#fff;padding-top:10px;opacity:1">
+        <div class="col">
+          <button ng-click="chooseCharact(0)" class="button button-light" style="opacity:2;min-height:0;font-size:1em;line-height:25px">全部分类<i class="ion-ios-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-click="changeCharactBlock()" class="arrowDown" style="top:44px">
+    <i ng-class="showCharactBlock?'ion-ios-arrow-up':'ion-ios-arrow-down'"></i>
+  </div>
+  <ion-content style="background-color:#f2f2f2;margin-top:34px;">
+    <!-- 首页第一行 全部、分类1、分类2 -->
+
+    
+
+    <!-- 首页 广告 轮播-->
+    <div class="headBanner">
+      <ion-slide-box delegate-handle="bannerHandle">
+        <ion-slide  ng-bind-html="banner"  ng-repeat="banner in banners track by $index">
+        </ion-slide>
+      </ion-slide-box> 
+    </div>
+    <!-- 首页4个导航按钮 -->
+    <div class="navBtns">
+      <div class="row row-center padZero navRow">
+        <div class="col col-25 padZero navCol">
+          <img src="img/1.png" class="navImg" />
+          <span class="navTitle">积分</span>
+        </div>
+        <div ui-sref="tabs.myorder" class="col col-25 padZero navCol">
+          <img src="img/2.png" class="navImg" />
+          <span class="navTitle">订单</span>
+        </div>
+        <div ui-sref="tabs.address" class="col col-25 padZero navCol">
+          <img src="img/3.png" class="navImg" />
+          <span class="navTitle">我的关注</span>
+        </div>
+        <div class="col col-25 padZero navCol">
+          <img src="img/4.png" class="navImg" />
+          <span class="navTitle">购物车</span>
+        </div>
+      </div>
+    </div>
+    <!-- 首页3个显视 广告块 -->
+    <div class="ads">
+      <div class="row padZero">
+        <div ng-bind-html="centerOne" class="leftad col col-50 padZero">
+        </div>
+        <div class="rightads col col-50 padZero">
+          <div ng-bind-html="centertwo" class="rightad row padZero" ng-repeat="centertwo in centerDouble">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 首页中间区域 Banner -->
+    <div class="centerBanner">
+      <div class="row padZero">
+        <div ng-bind-html="center3" class="col col-33 padZero centerBannerItem" ng-repeat="center3 in centerThree">
+        </div>
+      </div>
+    </div>
+    <!-- 首页商品  ListView 样式1 all in 一行-->
+    <div class="lineListView">
+      <div class="listViewHead">
+        <div class="row padZero">
+          <div class="col col-50 padZero listViewHeadLeft">
+            <div class="decoration">&nbsp;推荐商品</div>
+          </div>
+          <div class="col col-50 padZero listViewHeadRight">
+            
+          </div>
+        </div>
+      </div>
+      <div class="lineListViewContent">
+        <ion-scroll scrollbar-x="false" delegate-handle="lineScroll"  direction="x">
+          <div class="row padZero" style="width:560px;min-width:320;max-width:640px">
+            <div class="lineListViewItem padZero">
+              <div class="lineImg">
+                <img src="img/item.jpeg" />
+                <div class="linePrice">{{99.00|currency:'￥'}}</div>
+              </div>
+              <div class="lineTitle">
+                大嘴猴男装
+              </div>
+            </div>
+            <div class="lineListViewItem padZero">
+              <div class="lineImg">
+                <img src="img/item.jpeg" />
+                <div class="linePrice">{{99.00|currency:'￥'}}</div>
+              </div>
+              <div class="lineTitle">
+                大嘴猴男装
+              </div>
+            </div>
+            <div class="lineListViewItem padZero">
+              <div class="lineImg">
+                <img src="img/item.jpeg" />
+                <div class="linePrice">{{99.00|currency:'￥'}}</div>
+              </div>
+              <div class="lineTitle">
+                大嘴猴男装
+              </div>
+            </div>
+            <div class="lineListViewItem padZero">
+              <div class="lineImg">
+                <img src="img/item.jpeg" />
+                <div class="linePrice">{{99.00|currency:'￥'}}</div>
+              </div>
+              <div class="lineTitle">
+                大嘴猴男装
+              </div>
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+    </div>
+    <!-- 首页商品 ListView 样式 2 一个占据一行 比较轻量-->
+    <div class="lightListView">
+      <div class="listViewHead">
+        <div class="row padZero">
+          <div class="col col-50 padZero listViewHeadLeft">
+            <div class="decoration">&nbsp;推荐商品</div>
+          </div>
+          <div ui-sref="tabs.brand" class="col col-50 padZero listViewHeadRight">
+            
+          </div>
+        </div>
+      </div>
+      <div class="lightListViewContent">
+        <div class="lightListViewItemOne">
+          <div class="lightListViewItem row  padZero">
+            <div class="col col-33 lightImg padZero">
+              <img src="img/item2.png" />
+            </div>
+            <div class="lightInfo col col-66 padZero">
+              <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+              <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+              <div class="lightInfoElse">
+
+                <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                <span style="float:left">已售12123件
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="lightListViewItemOne">
+          <div class="lightListViewItem row  padZero">
+            <div class="col col-33 lightImg padZero">
+              <img src="img/item2.png" />
+            </div>
+            <div class="lightInfo col col-66 padZero">
+              <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+              <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+              <div class="lightInfoElse">
+                <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                <span style="float:left">已售12123件
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="lightListViewItemOne">
+          <div class="lightListViewItem row  padZero">
+            <div class="col col-33 lightImg padZero">
+              <img src="img/item2.png" />
+            </div>
+            <div class="lightInfo col col-66 padZero">
+              <div class="lightTitle">商品名称商品名称商品名称商品名称商品名称商品名称</div>
+              <div class="lightPrice"><span class="nowPrice">{{48|currency:'￥'}}</span>&nbsp;&nbsp;&nbsp;<span class="originPrice">{{99|currency:'￥'}}</span></div>
+              <div class="lightInfoElse">
+                <span style="color:#ED5F6D;border:solid 1px #ED5F6D;border-radius:5px;margin-right:44px;float:left">包邮</span>
+                <span style="float:left">已售12123件
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 首页商品 ListView 样式3 一个一块 比较重 -->
+    <div class="weightListView">
+      <div class="listViewHead">
+        <div class="row padZero">
+          <div class="col col-50 padZero listViewHeadLeft">
+            <div class="decoration">&nbsp;推荐商品</div>
+          </div>
+          <div ui-sref="tabs.brand" class="col col-50 padZero listViewHeadRight">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="weightListViewContent">
+        <div  ng-click="routeRedirectProvider('tabs.goodsDetail', 'gid', '{{item.goods_id}}')" class="weightListViewItem" ng-repeat="item in best_goods">
+          <div class="weightImg">
+            <img ng-src="{{picHost+item.goods_thumb}}" />
+            <div class="weightDesp">{{item.goods_brief}}</div>
+          </div>
+          <div class="weightInfo">
+            <div class="weightTitle">{{item.goods_name}}</div>
+            <div class="weightPrice">
+              <span class="nowPrice">{{item.promote_price?item.promote_price:item.market_price}}</span>
+              <span class="originPrice">{{item.market_price}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 首页 下部 推荐品牌-->
+    <div class="brands">
+      <div class="listViewHead">
+        <div class="row padZero">
+          <div class="col col-50 padZero listViewHeadLeft">
+            <div class="decoration">&nbsp;推荐品牌</div>
+          </div>
+          <div ui-sref="tabs.brand" class="col col-50 padZero listViewHeadRight">
+            更多品牌>
+          </div>
+        </div>
+      </div>
+      <div class="brandListView">
+        <div class="row padZero brandListLine row-wrap">
+          <div class="col col-25 padZero brandItem"  ng-repeat="brand in brands">
+            <a href="{{brand.url}}"><img ng-src="{{brandHost+brand.brand_logo}}" /></a>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
