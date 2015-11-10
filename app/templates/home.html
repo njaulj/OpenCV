@@ -134,15 +134,19 @@
 							<div class="list">
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">姓名</span>
-							    <input ng-model="resume.baseInfo.chineseName" type="text" placeholder="老王">
+							    <input ng-model="user.data.chineseName" type="text" placeholder="老王">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">职业</span>
-							    <input ng-model="resume.baseInfo.job" type="text" placeholder="高级 Web 工程师">
+							    <input ng-model="user.data.job" type="text" placeholder="高级 Web 工程师">
+							  </label>
+							  <label class="item item-input item-floating-label">
+							    <span class="input-label">简述</span>
+							    <input ng-model="user.data.intro" type="text" placeholder="热爱开源 喜欢动手实践">
 							  </label>
 							</div>
 							<div style="text-align:right">
-							<button ng-click="save" class="button button-calm">保存</button></div>
+							<button ng-click="user.update()" class="button button-calm">保存</button></div>
 						</div>
 						<div class="edu-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
 							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
@@ -181,29 +185,29 @@
 							<div class="list">
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">开始日期</span>
-							    <input  ng-model="resume.baseInfo.startDate" type="text" placeholder="2010.6">
+							    <input  ng-model="work.data.start_date" type="text" placeholder="2010.6">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">结束日期</span>
-							    <input  ng-model="resume.baseInfo.endDate" type="text" placeholder="2010.6">
+							    <input  ng-model="work.data.end_date" type="text" placeholder="2010.6">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">公司</span>
-							    <input  ng-model="resume.baseInfo.company" type="text" placeholder="FaceBook">
+							    <input  ng-model="work.data.company" type="text" placeholder="FaceBook">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">职位</span>
-							    <input  ng-model="resume.baseInfo.position" type="text" placeholder="高级Web工程师">
+							    <input  ng-model="work.data.position" type="text" placeholder="高级Web工程师">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">成就描述</span>
-							    <textarea ng-change="change(resume.baseInfo.highlights)" ng-model="resume.baseInfo.highlights" style="height:150px;overflow-y:scroll;" placeholder="获得了某些成就"></textarea>
+							    <textarea  ng-model="work.data.highlight" style="height:150px;overflow-y:scroll;" placeholder="获得了某些成就"></textarea>
 							  </label>
 							  
 
 							</div>
 							<div style="text-align:right">
-							<button class="button button-calm">增加</button></div>
+							<button ng-click="work.insert()" class="button button-calm">增加</button></div>
 						</div>
 						<div class="skill-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px">
 							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
@@ -212,51 +216,56 @@
 							<div class="list">
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">技能</span>
-							    <input  ng-model="skillInput" type="text" placeholder="JavaScript" />						    
+							    <input  ng-model="skill.data.skill_name" type="text" placeholder="JavaScript" />						    
 							  </label>
 							  <div class="light_stars item" style="z-index:9999">
 							  	<span>掌握程度</span>
-							  	<i ng-click="light(1)" ng-class="lightStars>0?'assertive ion-star':'ion-star'"></i>
-							  	<i ng-click="light(2)" ng-class="lightStars>1?'assertive ion-star':'ion-star'"></i>
-							  	<i ng-click="light(3)" ng-class="lightStars>2?'assertive ion-star':'ion-star'"></i>
-							  	<i ng-click="light(4)" ng-class="lightStars>3?'assertive ion-star':'ion-star'"></i>
-							  	<i ng-click="light(5)" ng-class="lightStars>4?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(1)" ng-class="skill.data.stars>0?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(2)" ng-class="skill.data.stars>1?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(3)" ng-class="skill.data.stars>2?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(4)" ng-class="skill.data.stars>3?'assertive ion-star':'ion-star'"></i>
+							  	<i ng-click="light(5)" ng-class="skill.data.stars>4?'assertive ion-star':'ion-star'"></i>
 
 							  </div>
 							  
 							</div>
 							<div style="text-align:right">
-							<button ng-click="add(resume.skills,skill)" class="button button-calm">增加</button></div>
+							<button ng-click="skill.insert()" class="button button-calm">增加</button></div>
 						</div>
-						<div class="contact-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px;margin-bottom:100px">
+						<div class="contact-info" style="border:dotted 1px #f6f6f6;padding-top:20px;position:relative;margin-top:20px;margin-bottom:200px">
 							<div class="div-header" style="background-color:#fff;position:absolute;top:-10px;left:10px">
 								联系方式
 							</div>
 							<div class="list">
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">邮箱</span>
-							    <input  ng-model="resume.baseInfo.email" type="text" placeholder="18251888949@163.com">
+							    <input  ng-model="contact.data.email" type="text" placeholder="18251888949@163.com">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">电话</span>
-							    <input  ng-model="resume.baseInfo.phone" type="text" placeholder="18251888949">
+							    <input  ng-model="contact.data.phone" type="text" placeholder="18251888949">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">个人网站</span>
-							    <input  ng-model="resume.baseInfo.website" type="text" placeholder="http://www.baidu.com">
+							    <input  ng-model="contact.data.website" type="text" placeholder="http://www.baidu.com">
 							  </label>
 							  <label class="item item-input item-floating-label">
 							    <span class="input-label">Github</span>
-							    <input  ng-model="resume.baseInfo.github" type="text" placeholder="http://www.baidu.com">
+							    <input  ng-model="contact.data.github" type="text" placeholder="https://github.com/njaulj">
 							  </label>
 							  
 
 							</div>
 							<div style="text-align:right">
-							<button class="button button-calm">保存</button></div>
+							<button ng-click="contact.update()" class="button button-calm">保存</button></div>
 						</div>
 					</div>
 					<div ng-if="tabIndex==2">
+						<div class="spinner">
+						  <div class="bounce1"></div>
+						  <div class="bounce2"></div>
+						  <div class="bounce3"></div>
+						</div>
 						 <h5>Json实时编辑器，MarkDown展示功能近期上线，敬请期待</h5>
 					</div>
 				</ion-scroll>

@@ -2,8 +2,9 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var SkillSchema = new Schema({
-	skillName:String,
-	stars:Number
+	skill_name:String,
+	stars:Number,
+	UserId:{type:Schema.ObjectId,ref:'User'}
 })
 
 

@@ -7,11 +7,11 @@ var eventproxy = require('eventproxy')
 
 exports.insert = function(req,res){
 	var _edu = {
-		start_date:req.body.data.start_date,
-		end_date:req.body.data.end_date,
-		studyType:req.body.data.studyType,
-		awards:req.body.data.awards,
-		university:req.body.data.university,
+		start_date:req.body.start_date,
+		end_date:req.body.end_date,
+		studyType:req.body.studyType,
+		awards:req.body.awards,
+		university:req.body.university,
 		UserId:'5641df73e70137bd082c266c'
 	}
 	console.log(_edu)
