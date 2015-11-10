@@ -30,7 +30,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
     baseInfo:{
       chineseName:'刘君',
       englishName:'Jack Willson',
-      job:'高级 Web 开发工程师'
+      job:'前端开发工程师'
     },
     eduInfo:[
       {
@@ -132,6 +132,9 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
     $scope.tabIndex = index
   }
 
+  $scope.about = function(){
+    window.location.href="https://github.com/njaulj/OpenCV"
+  }
 
   // .fromTemplateUrl() method
   $ionicPopover.fromTemplateUrl('my-popover.html', {
@@ -167,6 +170,10 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
 }])
 .controller('ResumeCtrl',['$scope','$ionicPopover','$timeout',function($scope,$ionicPopover,$timeout){
+    $scope.about = function(){
+      window.location.href="https://github.com/njaulj/OpenCV"
+    }  
+
     $scope.resume = {
       baseInfo:{
         chineseName:'刘君',
