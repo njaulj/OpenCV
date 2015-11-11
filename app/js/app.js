@@ -313,7 +313,7 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
 
 }])
-.controller('ResumeCtrl',['$scope','$ionicPopover','$timeout','Config',function($scope,$ionicPopover,$timeout,Config){
+.controller('ResumeCtrl',['$scope','$ionicPopover','$timeout','Config','$ionicModal','$ionicSlideBoxDelegate',function($scope,$ionicPopover,$timeout,Config,$ionicModal,$ionicSlideBoxDelegate){
     $scope.about = function(){
       window.location.href="https://github.com/njaulj/OpenCV"
     }  
@@ -370,6 +370,36 @@ var ionicApp = angular.module('ionicApp', ['ionic'])
 
     $scope.sendResume = function(){
       alert('一键发送简历功能稍后上线')
+    }
+
+
+    $ionicModal.fromTemplateUrl('templates/project.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
+    $scope.pagerClick = function(index){
+      $ionicSlideBoxDelegate.$getByHandle('project-slide').slide(index)
     }
 
 }])
